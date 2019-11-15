@@ -1,11 +1,20 @@
 import React from 'react';
-import './App.css';
+import { Route } from 'react-router-dom'
+import Navigation from './Components/Navigation'
+import UserHome from './Components/UserHome'
+import OrganizerHome from './Components/OrganizerHome'
+import Login from './Components/Login'
+import PrivateRoute from './Components/PrivateRoute'
+
 
 function App() {
   return (
-    <div className="App">
-     <h1>Wonderlust</h1>
-    </div>
+   <>
+   <Navigation />
+   <PrivateRoute exact path="/User" component={UserHome} />
+   <PrivateRoute exact path="/Organizer" component={OrganizerHome} />
+   <Route exact path="/login" component={Login}
+   </>
   );
 }
 
