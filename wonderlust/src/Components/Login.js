@@ -6,5 +6,5 @@ import React from 'react';
 
 export default function Login(){
     const[username, setUserName] = useState("");
-    const[password, setPassWord] = useSate("");
+    const[password, setPassWord] = useState("");
 }
