@@ -22,8 +22,9 @@ function OrganizerHome(props) {
 },[])
 
  return (
-  <OrgCreateExp /> /*side form*/
-  /*map through experiences in state render Experience component for all exps <Experience key={index} data={experience} \> */
+  <OrgCreateExp /> /*form on side left 30% width*/
+  /*map through experiences in state render Experience component for all exps <Experience key={index} data={experience} \>
+   styled to display at right 70% width of page*/
  );
 }
 
