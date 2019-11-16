@@ -3,18 +3,28 @@ import React from 'react';
 function OrgCreateExp(props) {
 
  //state for form
+ //[experience_desc]
+ //[experience_title]
+ //[date]   a string
+ //[image_url]  a string
 
 
+ // change handler for form
 
- // change handler
-
-
- // submit handler
 
  
+
+
  return (
   <div>
-   {/*Form for creating experience needs inputs for experience_desc,date,experience_title,image*/}
+   <form>
+       {/*Form for creating experience needs inputs for experience_desc,date,experience_title,image*/}
+
+    <input
+    />
+
+
+   </form>
   </div>
  );
 }
