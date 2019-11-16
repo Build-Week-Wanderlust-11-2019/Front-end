@@ -6,7 +6,7 @@ export function getAuthToken() {
 
 export default function() {
  return axios.create({
-  baseURL:"https://wanderlust-ty.herokuapp.com",
+  baseURL:"https://wanderlust-rl.herokuapp.com",
   headers: {
    Authorization: getAuthToken(),
 

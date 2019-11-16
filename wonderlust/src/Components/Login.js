@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import {orgRegister,userRegister,orgLogin,userLogin} from "../Utils/LoginHelper";
 import { connect } from "react-redux"
-import { saveID } from '../Actions/index'
+import { orgID, isOrg, saveUser} from '../Actions/index'
 
 function Login(props) {
 
@@ -16,23 +16,30 @@ function Login(props) {
   function register() {  
     const { username, password } = login;
     if (login.organizer) {
-      orgRegister(username, password).then(res => { props.saveID(res)});
-     
-      
+      orgRegister(username, password)
+      .then(res => { 
+       props.orgID(res,username)
+       props.isOrg(login.organizer)
+      });
     } else {
       userRegister(username,password)
+      props.isOrg(login.organizer)
+      props.saveUser(username)
     }
   }
 
   function loginUser() {   
     const { username, password} = login;
-    if (login.organizer) { //not returning id for org on login
-     orgLogin(username,password).then(res => { console.log(res);props.saveID(res)})
-     
- 
-
+    if (login.organizer) { 
+     orgLogin(username,password)
+     .then(res => {
+      props.orgID(res,username)
+      props.isOrg(login.organizer)
+      })
     } else {
      userLogin(username,password)
+      props.isOrg(login.organizer)
+      props.saveUser(username)
     }
   }
 
@@ -80,7 +87,9 @@ function Login(props) {
   );
 }
 const mapDispatchToProps = {
- saveID:saveID
+ orgID:orgID,
+ isOrg:isOrg,
+ saveUser:saveUser
 }
 export default connect(
  null,
