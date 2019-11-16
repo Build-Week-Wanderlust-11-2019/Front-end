@@ -11,6 +11,7 @@ function App() {
   return (
    <>
    <Navigation />
+   
    <PrivateRoute exact path="/User" component={UserHome} />
    <PrivateRoute exact path="/Organizer" component={OrganizerHome} />
    <Route exact path="/login" component={Login} />
