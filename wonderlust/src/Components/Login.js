@@ -11,14 +11,14 @@ function Login(props) {
     password: "",
     organizer: false
   });
-  const [id, setId] = useState();
-
+  
 
   function register() {  
     const { username, password } = login;
     if (login.organizer) {
-      orgRegister(username, password).then(res => setId(res));
-      saveID(id)
+      orgRegister(username, password).then(res => { props.saveID(res)});
+     
+      
     } else {
       userRegister(username,password)
     }
@@ -26,8 +26,11 @@ function Login(props) {
 
   function loginUser() {   
     const { username, password} = login;
-    if (login.organizer) {
-     orgLogin(username,password).then(res => setId(res))
+    if (login.organizer) { //not returning id for org on login
+     orgLogin(username,password).then(res => { console.log(res);props.saveID(res)})
+     
+ 
+
     } else {
      userLogin(username,password)
     }
@@ -39,6 +42,7 @@ function Login(props) {
       ...login,
       [e.target.name]: value
     });
+ 
   }
  
   return (
@@ -79,6 +83,6 @@ const mapDispatchToProps = {
  saveID:saveID
 }
 export default connect(
- {},
+ null,
  mapDispatchToProps
 )(Login);

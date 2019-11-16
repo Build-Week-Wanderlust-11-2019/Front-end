@@ -10,7 +10,7 @@ export default function reducer(state = initialState, action) {
 
 
    case ADDORGID: {
-    console.log(action.payload)
+    
     return {
      ...state,
      orgId: action.payload
