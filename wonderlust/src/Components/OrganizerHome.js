@@ -4,42 +4,30 @@ import OrgCreateExp from './OrgCreateExp'
 import { connect } from "react-redux"
 import {withRouter } from 'react-router-dom'
 import Experience from './Experience'
-import axios from 'axios';
+
 
 function OrganizerHome(props) {
-
  const [experiences, setExperiences] = useState([])
- 
+ //get oranizers experiences on load and on list change
  useEffect(() => {
   api().get(`/api/exp/${props.userId}`)
   .then(res => {
-   console.log(res)
    setExperiences(res.data)
   })
-}, [experiences.length]);
+ },[experiences])
 
-//state for your orgs id
-//state for experiences []
-
-
-//get orgs experiences using orgId from backend API
-
-
+ 
  return (
   <>
-  <div style={orgHomeContainer}>
-  <OrgCreateExp userId={props.userId}/> 
-  
- 
-  
-  
-  
+  <div style={orgHomeContainer}> 
   {/*form on side left 30% width*/
   /*map through experiences in state render Experience component for all exps <Experience key={index} data={experience} \>
-styled to display at right 70% width of page*/}
+styled to display at right 70% width of page pass userId to form*/}
+  <OrgCreateExp userId={props.userId}/> 
+  
    <div style={expContainer}>
-   {experiences.map(exp => (
-    <Experience data={exp}  />
+   {experiences.map((exp,index) => (
+    <Experience key={index} data={exp} updateExps={setExperiences} experiencesList={experiences} />
  ))} 
  </div>
  </div>
@@ -50,7 +38,7 @@ styled to display at right 70% width of page*/}
 function mapStateToProps(state){
  return{
   userId:state.user.user.orgId,
-
+  exps:state.user.experiences
  }
 
 }
@@ -68,8 +56,8 @@ const orgHomeContainer = {
 
 const expContainer = {
  width:"70%",
- display:"flex",
- flexDirection: "wrap",
+ display:"column",
+ 
  justifyContent:"center"
 
 }

@@ -1,7 +1,7 @@
 export const ADDORGID = "ADDORGID"
 export const ISORG = "ISORG"
 export const USERNAME = "USERNAME"
-
+export const ADDEXPERIENCE = "ADDEXPERIENCE"
 
 export function orgID(id,org_name){
  return dispatch => {
@@ -23,5 +23,12 @@ export function saveUser(username){
  return dispatch => {
   
   dispatch({ type:USERNAME, payload: username})
+ }
+}
+
+export function addExperience(experience){
+ return dispatch => {
+  
+  dispatch({ type:ADDEXPERIENCE, payload: experience})
  }
 }

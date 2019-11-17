@@ -2,11 +2,14 @@ import React, {useState} from 'react';
 import MapRender from '../Utils/MapRender'
 import api from '../Utils/AxiosAuth'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import {addExperience} from '../Actions/index'
+
 
 function OrgCreateExp(props) {
     const [data, setData] = useState({})
     const [searchTerm, setTerm] = useState("")
-    const key = ''
+    const key = '903b025bd10e41b89708a52e9713a4b7'
 
  //state for form
     const [newExperience, setExperience] = useState({
@@ -38,13 +41,21 @@ function OrgCreateExp(props) {
     axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${term}&key=${key}`)
     .then(res => {   
      setData(res.data.results[0].geometry)
+     
     })
    }
   
    function createExperience(experience){
     api().post(`/api/org/${props.userId}/exp`,experience)
     .then(res => {
-        console.log(res)
+        api().get(`/api/exp/${props.userId}`)
+        .then(res => {
+            props.addExperience(res)
+            props.updateExps(props.experiencesList)
+        })        
+        .catch(err => {
+            console.log(err)
+        })
     })
     .catch(err => {
         console.log(err)
@@ -98,8 +109,18 @@ function OrgCreateExp(props) {
     </div>
     );
     }
+function mapStateToProps(state){
+    return {
 
-export default OrgCreateExp;
+    }
+}
+const dispatchStateToProps = {
+    addExperience:addExperience
+}
+export default connect(
+    mapStateToProps,
+    dispatchStateToProps
+)(OrgCreateExp);
 
 const mapStyle = {
     height:"200px",
