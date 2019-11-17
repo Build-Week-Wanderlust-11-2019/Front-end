@@ -4,7 +4,7 @@ import {orgRegister,userRegister,orgLogin,userLogin} from "../Utils/LoginHelper"
 import { connect } from "react-redux"
 import { orgID, isOrg, saveUser} from '../Actions/index'
 import {withRouter} from 'react-router-dom'
-
+import api from '../Utils/AxiosAuth'
 function Login(props) {
 
   const [login, setLogin] = useState({
@@ -20,6 +20,9 @@ function Login(props) {
       .then(res => { 
        props.orgID(res,username)
        props.isOrg(login.organizer)
+       localStorage.setItem("id", res);
+       localStorage.setItem("isOrg", login.organizer);
+       localStorage.setItem("name", username)
        props.history.push('/organizer')
 
 
@@ -40,6 +43,9 @@ function Login(props) {
      .then(res => {
       props.orgID(res,username)
       props.isOrg(login.organizer)
+      localStorage.setItem("id", res);
+      localStorage.setItem("isOrg", login.organizer);
+      localStorage.setItem("name", username)
       props.history.push('/organizer')
 
       })
@@ -103,7 +109,7 @@ function mapStateToProps(state){
 const mapDispatchToProps = {
  orgID:orgID,
  isOrg:isOrg,
- saveUser:saveUser
+ saveUser:saveUser,
 }
 export default withRouter(connect(
  mapStateToProps,

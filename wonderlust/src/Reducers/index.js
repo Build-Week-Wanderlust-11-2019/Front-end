@@ -1,4 +1,4 @@
-import { ADDORGID, ISORG, USERNAME } from "../Actions/index"
+import { ADDORGID, ISORG, USERNAME, ADDEXPERIENCE } from "../Actions/index"
 
 const initialState = {
  experiences:[],
@@ -40,6 +40,15 @@ export function reducer(state = initialState, action) {
      user: {...state.user,
       isOrg: action.payload
      }
+    }
+   }
+
+   case ADDEXPERIENCE: {
+    console.log(action.payload)
+    return {
+     ...state,
+     experiences: action.payload
+     
     }
    }
    default:
