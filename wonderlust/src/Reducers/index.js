@@ -2,36 +2,44 @@ import { ADDORGID, ISORG, USERNAME } from "../Actions/index"
 
 const initialState = {
  experiences:[],
- name:"",
- isOrg: false,
- orgId:null,
+ user:{
+  name:"",
+  isOrg: false,
+  orgId:null,
+ }
 }
 
-export default function reducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
  switch (action.type) {
  
 
    case USERNAME:{
+    
     return{
      ...state,
+     user: {...state.user,
      name:action.payload,
      orgId:null
+     }
     }
    }
    case ADDORGID: {
     console.log(action.payload)
     return {
-     ...state,
+     ...state,     
+     user:{ ...state.user,
      orgId: action.payload.id,
      name: action.payload.org_name
-
+     }
     }
    }
 
    case ISORG: {
     return {
-     ...state,
-     isOrg: action.payload
+    ...state,
+     user: {...state.user,
+      isOrg: action.payload
+     }
     }
    }
    default:

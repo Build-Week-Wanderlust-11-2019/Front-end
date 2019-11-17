@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom'
+import {connect } from 'react-redux'
 
 export default function(props){
  
@@ -7,11 +8,12 @@ export default function(props){
 ...rest
 } = props
   return (
-  <Route {...rest} render={(renderProps) =>{
-   const token = localStorage.getItem('token')
-    
+  <Route {...rest} render={(renderProps)  =>{
+   const token = localStorage.getItem('token')   
+  
+   console.log(props)
    return token
-          ? <Component {...renderProps}/> 
+          ? <Component {...renderProps} /> 
           : <Redirect to="/login" />
   }} />
  

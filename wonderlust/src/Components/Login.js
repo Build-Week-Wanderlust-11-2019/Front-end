@@ -3,6 +3,7 @@ import { useState } from "react";
 import {orgRegister,userRegister,orgLogin,userLogin} from "../Utils/LoginHelper";
 import { connect } from "react-redux"
 import { orgID, isOrg, saveUser} from '../Actions/index'
+import {withRouter} from 'react-router-dom'
 
 function Login(props) {
 
@@ -12,7 +13,6 @@ function Login(props) {
     organizer: false
   });
   
-
   function register() {  
     const { username, password } = login;
     if (login.organizer) {
@@ -20,11 +20,16 @@ function Login(props) {
       .then(res => { 
        props.orgID(res,username)
        props.isOrg(login.organizer)
+       props.history.push('/organizer')
+
+
       });
     } else {
       userRegister(username,password)
       props.isOrg(login.organizer)
       props.saveUser(username)
+      props.history.push('/user')
+
     }
   }
 
@@ -35,11 +40,14 @@ function Login(props) {
      .then(res => {
       props.orgID(res,username)
       props.isOrg(login.organizer)
+      props.history.push('/organizer')
+
       })
     } else {
      userLogin(username,password)
       props.isOrg(login.organizer)
       props.saveUser(username)
+      props.history.push('/user')
     }
   }
 
@@ -51,6 +59,7 @@ function Login(props) {
     });
  
   }
+  
  
   return (
     <div>
@@ -82,16 +91,22 @@ function Login(props) {
         <button onClick={(e) => { e.preventDefault(); register()}}>Register</button>
         <button onClick={(e) => { e.preventDefault(); loginUser()}}>Login</button>
       </form>
-      
+     
     </div>
   );
+}
+function mapStateToProps(state){
+ return {
+  data:state
+ }
 }
 const mapDispatchToProps = {
  orgID:orgID,
  isOrg:isOrg,
  saveUser:saveUser
 }
-export default connect(
- null,
+export default withRouter(connect(
+ mapStateToProps,
  mapDispatchToProps
-)(Login);
+)(Login))
+
