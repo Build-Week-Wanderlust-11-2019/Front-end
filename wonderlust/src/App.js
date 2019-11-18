@@ -1,21 +1,23 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
 import Navigation from './Components/Navigation'
-import UserHome from './Components/UserHome'
 import OrganizerHome from './Components/OrganizerHome'
 import Login from './Components/Login'
 import PrivateRoute from './Components/PrivateRoute'
 import {connect } from "react-redux"
 import {withRouter} from 'react-router-dom'
 import Home from './Components/Home'
+import Dashboard from './Components/Dashboard';
+
+
+
 function App(props) {
   console.log(props.propstate)
   return (
    <>
-   <Navigation />
-   <Route exact path="/"  component={Home} />
-   <PrivateRoute exact path="/user" component={UserHome}  />
-   <Route exact path="/organizer" component={OrganizerHome} />
+   <PrivateRoute exact path="/"  component={Dashboard} />
+   <PrivateRoute exact path="/user" component={Dashboard}  />
+   <PrivateRoute exact path="/organizer" component={Dashboard} />
    <Route exact path="/login" component={Login} />
    </>
   );
