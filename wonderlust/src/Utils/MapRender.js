@@ -3,7 +3,7 @@ import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css"
 import React, { Component } from 'react'
 import MapGL, {NavigationControl} from "react-map-gl";
 
-const token = "pk.eyJ1Ijoicm1sZWUwMDAiLCJhIjoiY2szMzU0OG16MGpocjNobGJjbmM3ajM5dyJ9.HTcSlAaa2pd78DwxhUVOnQ"
+const token = ""
 
 class SearchableMap extends Component {
 
@@ -21,23 +21,8 @@ constructor(props) {
       }
     };
   }
-
-  // mapRef = React.createRef()
-
-  handleViewportChange = viewport => {
-    this.setState({
-      viewport: { ...this.state.viewport, ...viewport}
-    })
-  }
-  // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
-  handleGeocoderViewportChange = viewport => {
-    const geocoderDefaultOverrides = { transitionDuration: 1000 };
-
-    return this.handleViewportChange({
-      ...viewport,
-      ...geocoderDefaultOverrides
-    });
-  };
+ 
+  
 
     render(){   
       
@@ -49,11 +34,11 @@ constructor(props) {
        }
    
       return (
-       <div style={mapviewstyle}>
-       <MapGL
+       <div >
+       <MapGL style={mapviewstyle}
        {...viewport}
-       onViewportChange={(viewport) => this.setState({viewport})}
-       mapStyle="mapbox://styles/mapbox/streets-v10"
+       onViewportChange={(viewport) => this.setState({...viewport})}
+       mapStyle="mapbox://styles/mapbox/streets-v11"
        mapboxApiAccessToken={token}>
        <div className="nav" style={navStyle}>
          <NavigationControl onViewportChange={(viewport) => this.setState({viewport})}/>

@@ -7,9 +7,10 @@ import PrivateRoute from './Components/PrivateRoute'
 import {connect } from "react-redux"
 import {withRouter} from 'react-router-dom'
 import { orgID, isOrg} from './Actions/index'
-
 import Home from './Components/Home'
+import ExpandedExperience from './Components/ExpandedExperience';
 import Dashboard from './Components/Dashboard';
+
 
 
 
@@ -23,6 +24,7 @@ function App(props) {
    <PrivateRoute exact path="/user" component={Dashboard}  />
    <PrivateRoute exact path="/organizer" component={Dashboard} />
    <Route exact path="/login" component={Login} />
+   <Route exact path="/update:id" render={ (props) => <ExpandedExperience {...props} />} />
    </>
   );
 }
