@@ -33,7 +33,7 @@ function Navigation(props) {
     return (
         <StyledDrop>
         <h1>Wanderlust</h1>
-        <Dropdown isOpen={open} toggle={toggler}>
+        <Dropdown direction="left" isOpen={open} toggle={toggler}>
             <DropdownToggle className="theButton">
             <i className="fas fa-bars burgerMenu"></i>
             </DropdownToggle>
