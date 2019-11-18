@@ -33,6 +33,9 @@ margin-top: 1rem
 const StyledIMG = styled.div`
 opacity: 0.2;
 filter: alpha(opacity=50);
+width: 100%;
+height: auto;
+position: fixed;
 `
 
 
