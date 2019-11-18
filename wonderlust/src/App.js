@@ -14,6 +14,15 @@ import Dashboard from './Components/Dashboard';
 
 
 
+
+
+
+
+
+
+
+
+
 function App(props) {
   //getting user info from localstorage to persist over refreshes
   props.orgID(localStorage.getItem("id"),localStorage.getItem("name"))
