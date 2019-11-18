@@ -7,7 +7,9 @@ import styled from 'styled-components';
 
 const StyledDrop = styled.div`
 text-align: right;
-background-color: black;
+background-color: grey;
+display: flex;
+justify-content: space-between;
 `
 
 
@@ -30,6 +32,7 @@ function Navigation(props) {
     }
     return (
         <StyledDrop>
+        <h1>Wanderlust</h1>
         <Dropdown isOpen={open} toggle={toggler}>
             <DropdownToggle className="theButton">
             <i className="fas fa-bars burgerMenu"></i>
