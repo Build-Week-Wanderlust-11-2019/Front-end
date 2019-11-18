@@ -8,7 +8,6 @@ function Home(props) {
   console.log(props);
   return (
       <>
-      <Navigation />
       <p>Landing,route</p>
       </>
   )

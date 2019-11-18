@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { Route } from 'react-router-dom'
 import Navigation from './Components/Navigation'
-import UserHome from './Components/UserHome'
 import OrganizerHome from './Components/OrganizerHome'
 import Login from './Components/Login'
 import PrivateRoute from './Components/PrivateRoute'
@@ -10,16 +9,19 @@ import {withRouter} from 'react-router-dom'
 import { orgID, isOrg} from './Actions/index'
 
 import Home from './Components/Home'
+import Dashboard from './Components/Dashboard';
+
+
+
 function App(props) {
   //getting user info from localstorage to persist over refreshes
   props.orgID(localStorage.getItem("id"),localStorage.getItem("name"))
   props.isOrg(localStorage.getItem("isOrg"))
   return (
    <>
-   <Navigation />
-   <Route exact path="/"  component={Home} />
-   <PrivateRoute exact path="/user" component={UserHome}  />
-   <Route exact path="/organizer" component={OrganizerHome} />
+   <PrivateRoute exact path="/"  component={Dashboard} />
+   <PrivateRoute exact path="/user" component={Dashboard}  />
+   <PrivateRoute exact path="/organizer" component={Dashboard} />
    <Route exact path="/login" component={Login} />
    </>
   );
