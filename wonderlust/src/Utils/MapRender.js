@@ -3,7 +3,7 @@ import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css"
 import React, { Component } from 'react'
 import MapGL, {NavigationControl} from "react-map-gl";
 
-const token = "pk.eyJ1Ijoicm1sZWUwMDAiLCJhIjoiY2szM21qZjZ1MHRkeDNtb2IyNnFvOHFuMiJ9.2WbYxj4f5zia415x9pIYdA"
+const token = ""
 
 class SearchableMap extends Component {
 

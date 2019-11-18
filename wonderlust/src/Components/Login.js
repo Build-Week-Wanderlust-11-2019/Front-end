@@ -14,8 +14,10 @@ position: fixed;
 top: 50%;
 left: 50%
 transform: translate(-50%, -50%);
-border: 3px solid black
-padding: 7rem 4rem 7rem 4rem
+border: 3px solid black;
+padding: 7rem 4rem 7rem 4rem;
+//background-image: url("/map.jpg")
+font-weight: bold;
 `
 
 const StyledLoginTitle = styled.div`
@@ -26,6 +28,11 @@ font-size: 30px;
 const Styledlogreg = styled.div`
 text-align: center;
 margin-top: 1rem
+`
+
+const StyledIMG = styled.div`
+opacity: 0.2;
+filter: alpha(opacity=50);
 `
 
 
@@ -94,6 +101,8 @@ function Login(props) {
 
 
     return (
+        <>
+        <StyledIMG><img src="/Map.jpg" /></StyledIMG>
         <StyledLog>
             <StyledLoginTitle>Welcome<br />
                 to<br />
@@ -124,13 +133,14 @@ function Login(props) {
                     checked={login.organizer}
                 />
                 Organizer?
-        <br />
+        <br /><br/>
                 <button onClick={(e) => { e.preventDefault(); register() }}>Register</button><br/><br/>
                 <button onClick={(e) => { e.preventDefault(); loginUser() }}>Login</button>
                 </Styledlogreg>
             </form>
 
         </StyledLog>
+        </>
     );
 }
 function mapStateToProps(state) {
