@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import api from '../Utils/AxiosAuth'
 import OrgCreateExp from './OrgCreateExp'
 import { connect } from "react-redux"
-import {withRouter } from 'react-router-dom'
+import {withRouter,Link } from 'react-router-dom'
 import Experience from './Experience'
 
 
@@ -27,7 +27,7 @@ styled to display at right 70% width of page pass userId to form*/}
   
    <div style={expContainer}>
    {experiences.map((exp,index) => (
-    <Experience key={index} data={exp} updateExps={setExperiences} experiencesList={experiences} />
+    <Link to ={`/update:${exp.id}`}><Experience key={index} data={exp} updateExps={setExperiences} experiencesList={experiences} /> </Link>
  ))} 
  </div>
  </div>
