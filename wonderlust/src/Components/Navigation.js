@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import styled from 'styled-components';
+
+
+
+const StyledDrop = styled.div`
+text-align: right;
+background-color: black;
+`
+
+
+
+
+
+
 
 
 function Navigation(props) {
@@ -15,6 +29,7 @@ function Navigation(props) {
         setOpen(!open)
     }
     return (
+        <StyledDrop>
         <Dropdown isOpen={open} toggle={toggler}>
             <DropdownToggle className="theButton">
             <i className="fas fa-bars burgerMenu"></i>
@@ -27,6 +42,7 @@ function Navigation(props) {
                 <DropdownItem onClick={logOut}>Log Out</DropdownItem>
             </DropdownMenu>
         </Dropdown>
+        </StyledDrop>
     );
 }
 
