@@ -18,8 +18,14 @@ border: 3px solid black
 padding: 7rem 4rem 7rem 4rem
 `
 
-const StyledLoginTitle =styled.div`
+const StyledLoginTitle = styled.div`
 text-align: center
+font-size: 30px;
+`
+
+const Styledlogreg = styled.div`
+text-align: center;
+margin-top: 1rem
 `
 
 
@@ -110,6 +116,7 @@ function Login(props) {
                     onChange={handleChange}
                 />
                 <br />
+                <Styledlogreg>
                 <input
                     type="checkbox"
                     name="organizer"
@@ -118,8 +125,9 @@ function Login(props) {
                 />
                 Organizer?
         <br />
-                <button onClick={(e) => { e.preventDefault(); register() }}>Register</button>
+                <button onClick={(e) => { e.preventDefault(); register() }}>Register</button><br/><br/>
                 <button onClick={(e) => { e.preventDefault(); loginUser() }}>Login</button>
+                </Styledlogreg>
             </form>
 
         </StyledLog>
