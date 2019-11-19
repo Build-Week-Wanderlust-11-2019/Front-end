@@ -9,9 +9,11 @@ import styled from 'styled-components';
 
 
 const StyledExpCreator = styled.div`
-
 `
-
+const StyledInput = styled.input`
+padding-top: 1rem;
+margin-top: 1rem;
+`
 
 
 
@@ -74,12 +76,12 @@ function OrgCreateExp(props) {
 
 
     return (
-        <tyledExpCreator>
+        <StyledExpCreator>
         <div style={formContainer}>
             <div style={mapStyle}>
 
                 <form onSubmit={(e) => { searchLocation(e, searchTerm, key) }}>
-                    <input
+                    <StyledInput input
                         type="text"
                         name="location"
                         placeholder="location"
@@ -88,25 +90,25 @@ function OrgCreateExp(props) {
                     <button type="submit">Get location</button>
 
                     <br />
-                    <input
+                    <StyledInput input
                         type="text"
                         name="experience_title"
                         placeholder="title"
                         onChange={createChangeHandler}
                     />
-                    <input
+                    <StyledInput input
                         type="text"
                         name="experience_desc"
                         placeholder="description"
                         onChange={createChangeHandler}
                     />
-                    <input
+                    <StyledInput input
                         type="date"
                         name="date"
                         placeholder="date"
                         onChange={createChangeHandler}
                     />
-                    <input
+                    <StyledInput input
                         type="text"
                         name="image"
                         placeholder="imageurl"
@@ -117,7 +119,7 @@ function OrgCreateExp(props) {
                 <MapRender coords={data} />
             </div>
         </div>
-        </tyledExpCreator>
+        </StyledExpCreator>
     );
 }
 function mapStateToProps(state) {

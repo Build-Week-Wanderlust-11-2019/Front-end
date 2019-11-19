@@ -13,9 +13,7 @@ import Dashboard from './Components/Dashboard';
 import styled from 'styled-components';
 
 
-const StyledApp = styled.div`
 
-`
 
 
 
