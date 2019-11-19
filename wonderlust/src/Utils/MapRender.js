@@ -54,7 +54,5 @@ const navStyle = {
   left: 0,
   padding: '10px'
 };
-const mapviewstyle = {
- width:"100%"
-}
+
 export default SearchableMap;

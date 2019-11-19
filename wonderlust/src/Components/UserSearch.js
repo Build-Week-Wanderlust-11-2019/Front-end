@@ -1,9 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function UserSearch(props) {
+
+const [searchTerm, setTerm] = useState("")
+
+function titleSearch(e,term,list) {
+ 
+ props.updateRes(list.filter( word => ( word.experience_title.toLowerCase().includes(term.toLowerCase()))))
+ 
+ 
+   
+}
+
+
+function searchChange(e){
+ const value = e.target.value
+ setTerm(value)
+}
+
  return (
   <div>
-   {/* user side search Form maybe by date or search term -{could use a simple filter method for a dumb search function}- or if time permits by location using geolocation*/}
+
+   <form onSubmit={(e) => {e.preventDefault();titleSearch(e,searchTerm,props.list)}}>
+    <input
+    type="text"
+    name="search"
+    placeholder="search"
+    onChange={searchChange}
+/>
+<button type="submit">Search</button>
+<button onClick={(e) => {e.preventDefault(); props.reset()}}>See All</button>
+   </form>
   </div>
  );
 }

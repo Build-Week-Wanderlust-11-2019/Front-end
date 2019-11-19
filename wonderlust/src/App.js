@@ -1,4 +1,4 @@
-import React ,{useEffect}from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom'
 import Navigation from './Components/Navigation'
 import OrganizerHome from './Components/OrganizerHome'
@@ -9,9 +9,8 @@ import {withRouter} from 'react-router-dom'
 import { orgID, isOrg} from './Actions/index'
 import Home from './Components/Home'
 import OrganizerUpdatePage from './Components/OrganizerUpdatePage';
-import UserSearch from './Components/UserSearch'
-import Dashboard from './Components/Dashboard';
-import styled from 'styled-components';
+import UserHome from './Components/UserHome'
+
 
 
 
@@ -34,10 +33,10 @@ function App(props) {
    <>
    <Navigation />
    <PrivateRoute exact path="/"  component={Home} />
-   <PrivateRoute exact path="/user" component={UserSearch}  />
+   <PrivateRoute exact path="/user" component={UserHome}  />
    <PrivateRoute exact path="/organizer" component={OrganizerHome} />
    <Route exact path="/login" component={Login} />
-   <PrivateRoute exact path="/update:id" component={OrganizerUpdatePage} />} />
+   <PrivateRoute exact path="/update:id" component={OrganizerUpdatePage} />
    </>
   );
 }

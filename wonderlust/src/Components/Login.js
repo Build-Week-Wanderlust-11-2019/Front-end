@@ -5,7 +5,6 @@ import { orgRegister, userRegister, orgLogin, userLogin } from "../Utils/LoginHe
 import { connect } from "react-redux"
 import { orgID, isOrg, saveUser } from '../Actions/index'
 import { withRouter } from 'react-router-dom'
-import api from '../Utils/AxiosAuth'
 import styled from 'styled-components';
 
 

@@ -5,11 +5,9 @@ import {Provider} from 'react-redux'
 import thunk from "redux-thunk"
 import logger from "redux-logger"
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import reducer from './Reducers/index'
 import {BrowserRouter} from 'react-router-dom'
 import {reducer as userReducer } from "./Reducers/index"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styled from 'styled-components';
 
 const rootReducer = combineReducers({
  user:userReducer
