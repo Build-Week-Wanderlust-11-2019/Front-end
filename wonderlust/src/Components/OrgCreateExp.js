@@ -3,11 +3,9 @@ import MapRender from '../Utils/MapRender'
 import api from '../Utils/AxiosAuth'
 import axios from 'axios'
 import { connect } from 'react-redux'
-
 import {addExperience} from '../Actions/index'
-import { setState } from 'expect/build/jestMatchersObject';
 
-import { addExperience } from '../Actions/index'
+
 import styled from 'styled-components';
 
 
@@ -81,24 +79,13 @@ function OrgCreateExp(props) {
             console.log(err)
 
     })
-
+})
+    }
+   
     // change handler for form
 
-    function searchChange(e) {
-        const value = e.target.value
-        setTerm(value)
-    }
-    function createChangeHandler(e) {
-        const value = e.target.value
-        setExperience({
-            ...newExperience,
-            [e.target.name]: value
+   
 
-        })
-    }
-  
-
- 
 
 
     return (
@@ -148,16 +135,13 @@ function OrgCreateExp(props) {
         </StyledExpCreator>
     );
 }
-function mapStateToProps(state) {
-    return {
 
-    }
-}
+   
 const dispatchStateToProps = {
     addExperience: addExperience
 }
 export default connect(
-    mapStateToProps,
+    null,
     dispatchStateToProps
 )(OrgCreateExp);
 
