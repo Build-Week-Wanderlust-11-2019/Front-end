@@ -13,14 +13,30 @@ function OrgUpdateExp(props) {
 
     //state for form
     const [updateExperience, setupdateExperience] = ({
-
-
-
-
-
+        experience_title: '',
+        experience_desc: '',
+        date: null,
+        image: null,
+        experience_lat: null,
+        experience_long: null,
     })
 
     // change handler
+function updateExperience(e){
+    const value = e.target.value
+    setTerm(value)
+}
+function createChangeHandler(e){
+    const value = e.target.value
+    setupdateExperience({
+        ...updateExperience,
+        [e.target.name]: value
+    })
+}
+
+
+
+
 
 
     // submit handler
