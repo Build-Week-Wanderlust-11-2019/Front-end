@@ -10,6 +10,18 @@ import { orgID, isOrg} from './Actions/index'
 import Home from './Components/Home'
 import OrganizerUpdatePage from './Components/OrganizerUpdatePage';
 import UserSearch from './Components/UserSearch'
+import ExpandedExperience from './Components/ExpandedExperience';
+import Dashboard from './Components/Dashboard';
+import styled from 'styled-components';
+
+
+
+
+
+
+
+
+
 
 
 
