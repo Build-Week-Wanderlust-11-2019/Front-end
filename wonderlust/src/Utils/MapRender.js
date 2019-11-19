@@ -3,7 +3,7 @@ import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css"
 import React, { Component } from 'react'
 import MapGL, {NavigationControl} from "react-map-gl";
 
-const token = ""
+const token = "pk.eyJ1Ijoicm1sZWUwMDAiLCJhIjoiY2szM21qZjZ1MHRkeDNtb2IyNnFvOHFuMiJ9.2WbYxj4f5zia415x9pIYdA"
 
 class SearchableMap extends Component {
 
@@ -16,8 +16,8 @@ constructor(props) {
         zoom: 8,
         bearing: 0,
         pitch: 0,
-        width: '100%',
-        height: 500,
+        width: 500,
+        height: 300,
       }
     };
   }
@@ -28,16 +28,15 @@ constructor(props) {
       
 
       const { viewport} = this.state
-      if(this.props.coords.lat){
-       viewport.latitude = this.props.coords.lat
-       viewport.longitude = this.props.coords.lng
+      if(this.props.lat){
+       viewport.latitude = this.props.lat
+       viewport.longitude = this.props.long
        }
    
       return (
        <div >
-       <MapGL style={mapviewstyle}
+       <MapGL 
        {...viewport}
-       onViewportChange={(viewport) => this.setState({...viewport})}
        mapStyle="mapbox://styles/mapbox/streets-v11"
        mapboxApiAccessToken={token}>
        <div className="nav" style={navStyle}>

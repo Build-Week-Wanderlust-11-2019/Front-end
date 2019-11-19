@@ -14,9 +14,16 @@ function OrgUpdateExp(props) {
  
  return (
   <div>
-   {/*Form for updating experience, needs inputs for experience_desc,date,experience_title,image*/}
+   <form style={style}>
+
+   </form>
   </div>
  );
 }
 
 export default OrgUpdateExp;
+const style = {
+ width:"45%",
+ height:"100%",
+ border:"2px solid black",
+}
