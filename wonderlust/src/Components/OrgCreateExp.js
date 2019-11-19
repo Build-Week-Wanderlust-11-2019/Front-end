@@ -4,12 +4,13 @@ import api from '../Utils/AxiosAuth'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import {addExperience} from '../Actions/index'
+import { setState } from 'expect/build/jestMatchersObject';
 
 
 function OrgCreateExp(props) {
-    const [data, setData] = useState({})
+
     const [searchTerm, setTerm] = useState("")
-    const key = ''
+    const key = '4ac18f2821024e6b8bb8e5643e56574a'
 
  //state for form
     const [newExperience, setExperience] = useState({
@@ -22,7 +23,7 @@ function OrgCreateExp(props) {
         
     })
  
- // change handler for form
+
 
  function searchChange(e){
     const value = e.target.value
@@ -36,21 +37,31 @@ function OrgCreateExp(props) {
 
 })
  }
-   function searchLocation(e,term,key){
-    e.preventDefault()
-    axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${term}&key=${key}`)
-    .then(res => {   
-     setData(res.data.results[0].geometry)
-     
+
+   
+   function searchLocation(e, term, key) {
+     e.preventDefault();
+     axios
+       .get(`https://api.opencagedata.com/geocode/v1/json?q=${term}&key=${key}`)
+       .then(res => {
+         setExperience({...newExperience,
+        experience_lat:res.data.results[0].geometry.lat,
+        experience_long:res.data.results[0].geometry.lng
     })
+        
+         })
+         
+       
    }
-  
-   function createExperience(experience){
+ 
+   function createExperience(experience){ 
+    
     api().post(`/api/org/${props.userId}/exp`,experience)
     .then(res => {
+        
         api().get(`/api/exp/${props.userId}`)
         .then(res => {
-            props.addExperience(res)
+            props.addExperience(res.data)
             props.updateExps(props.experiencesList)
         })        
         .catch(err => {
@@ -66,8 +77,8 @@ function OrgCreateExp(props) {
 
  return (
   <div style={formContainer}>
+      {newExperience.experience_lat ? <p>{newExperience.experience_lat}</p> : null}
     <div style={mapStyle}>
-
     <form onSubmit={(e) => {searchLocation(e,searchTerm,key)}}>
         <input
         type="text"
@@ -76,7 +87,9 @@ function OrgCreateExp(props) {
         onChange={searchChange}
         />
         <button type="submit">Get location</button>
-
+    </form>
+    <br/>
+    <form>
         <br/>
         <input
         type="text"
@@ -104,7 +117,7 @@ function OrgCreateExp(props) {
         />
         <button onClick={(e) => {e.preventDefault(); createExperience(newExperience)}}>create</button>
     </form>
-    <MapRender coords={data}/>
+    {/* <MapRender lat={expLat} long={expLong}/>  */}
     </div>
     </div>
     );
