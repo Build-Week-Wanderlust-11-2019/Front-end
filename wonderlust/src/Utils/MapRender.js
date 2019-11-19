@@ -13,7 +13,7 @@ constructor(props) {
       viewport: {
         latitude: 17.442120,  
         longitude: 78.391384,
-        zoom: 8,
+        zoom: 5,
         bearing: 0,
         pitch: 0,
         width: 500,
@@ -54,7 +54,5 @@ const navStyle = {
   left: 0,
   padding: '10px'
 };
-const mapviewstyle = {
- width:"100%"
-}
+
 export default SearchableMap;
