@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import api from '../Utils/AxiosAuth'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { updateExperience } from '../Actions/index'
+//import { updateExperience } from '../Actions/index'
 
 
 
@@ -12,7 +12,7 @@ function OrgUpdateExp(props) {
     const key = '4ac18f2821024e6b8bb8e5643e56574a'
 
     //state for form
-    const [updateExperience, setUpdateExperience] = ({
+    const [newUpdateExperience, setUpdateExperience] = ({
         experience_title: '',
         experience_desc: '',
         date: null,
@@ -22,14 +22,21 @@ function OrgUpdateExp(props) {
     })
 
     // change handler
+// <<<<<<< barinder-joseph-singh
+//     function searchChange(e) {
+//         const value = e.target.value
+//         setTerm(value)
+//     }
+
     // function updateExperience(e) {
     //     const value = e.target.value
     //     setTerm(value)
     // }
+
     function createChangeHandler(e) {
         const value = e.target.value
         setUpdateExperience({
-            ...updateExperience,
+            ...newUpdateExperience,
             [e.target.name]: value
         })
     }
@@ -41,7 +48,7 @@ function OrgUpdateExp(props) {
             .get(`https://api.opencagedata.com/geocode/v1/json?q=${term}&key=${key}`)
             .then(res => {
                 setUpdateExperience({
-                    ...updateExperience,
+                    ...newUpdateExperience,
                     experience_lat: res.data.results[0].geometry.lat,
                     experience_long: res.data.results[0].geometry.lng
                 })
@@ -49,16 +56,18 @@ function OrgUpdateExp(props) {
     }
 
 
-    function supdateExperience(experience) {
+    function updateExperience(experience) {
         api().post(`/api/org/${props.userId}/exp`, experience)
             .then(res => {
-                props.updateExperience(res.data)
-                props.updateExperience(props.experienceList)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
+                api().get(`/api/exp/${props.userId}`)
+                    .then(res => {
+                        props.updateExperience(res.data)
+                        props.updateExperience(props.experienceList)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
 
 
 
@@ -69,17 +78,60 @@ function OrgUpdateExp(props) {
 
 
     return (
-        <div>
-            <form style={style}>
+            <div>
+                <form style={style} onSubmit={(e) => { searchLocation(e, searchTerm, key) }}>
+                    <input
+                        type="text"
+                        name="location"
+                        placeholder={searchChange}
+                    />
+                    <button type="submit">Get location</button>
+                    <br />
+                    <input
+                        type="text"
+                        name="experience_title"
+                        placeholder="title"
+                        onChange={createChangeHandler}
+                    />
+                    <input
+                        type="text"
+                        name="experience_desc"
+                        placeholder="description"
+                        onChange={createChangeHandler}
+                    />
+                    <input
+                        type="date"
+                        name="date"
+                        placeholder="date"
+                        onChange={createChangeHandler}
+                    />
+                    <input
+                        type="text"
+                        name="image"
+                        placeholder="imageurl"
+                        onChange={createChangeHandler}
+                    />
+                    <button onClick={(e) => { e.preventDefault(); updateExperience(newUpdateExperience) }}>update</button>
+                </form>
+            </div>
+        );
+    }
 
-            </form>
-        </div>
-    );
-}
 
-export default OrgUpdateExp;
-const style = {
-    width: "45%",
-    height: "100%",
-    border: "2px solid black",
-}
+
+
+
+
+
+
+
+
+
+
+
+    export default OrgUpdateExp;
+    const style = {
+        width: "45%",
+        height: "100%",
+        border: "2px solid black",
+    }
