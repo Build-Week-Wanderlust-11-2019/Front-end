@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import PagContainer from './PagContainer'
 import Pagination from './Pagination'
 
-function PagSystem({exps,loading}) {
+function PagSystem({exps,loading,user}) {
 
 
 const [currentPage,setCurrentPage] = useState(1)
@@ -18,7 +18,7 @@ const paginate = (pageNumber) => {
  return (
   <div>
    <div style={pagGroup}>
-      <PagContainer exps={currentExpGrp} loading={loading}/>
+      <PagContainer exps={currentExpGrp} loading={loading} user={user}/>
       <div style={pag}> 
       <Pagination expsPerPg={expsPerPg} totalExps={exps.length} paginate={paginate} />
   </div>

@@ -7,11 +7,10 @@ import Experience from '../Experience'
 import {addExperience} from '../../Actions/index'
 import PagContainer from '../PagContainer'
 import Pagination from '../Pagination'
-
+import PagSystem from '../PagSystem'
 function OrganizerHome(props) {
 const [loading, setLoading] = useState()
-const [currentPage,setCurrentPage] = useState(1)
-const [expsPerPg,setExpsPerPg] = useState(4)
+
 
 
 const [exps, setExps] = useState([])
@@ -27,28 +26,15 @@ const [exps, setExps] = useState([])
   getExps()
  },[exps.length])
 
-const indexOfLastExp = currentPage * expsPerPg
-const indexOfFirstExp = indexOfLastExp - expsPerPg
-const currentExpGrp = exps.slice(indexOfFirstExp,indexOfLastExp)
 
-//changeing page
-const paginate = (pageNumber) => {
-  setCurrentPage(pageNumber)
-}
+
  
  return (
   <>
   
   <div style={homeContainer}> 
   <OrgCreateExp userId={props.userId}/> 
-  
-  
- 
-    <div style={pagGroup}><PagContainer exps={currentExpGrp} loading={loading}/>
-   <div style={pag}> 
-    <Pagination expsPerPg={expsPerPg} totalExps={exps.length} paginate={paginate} />
-  </div>
-  </div>
+   <PagSystem exps={exps} user={false} loading={loading}/>
  </div>
    </>
  )
