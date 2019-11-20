@@ -8,22 +8,22 @@ import {addExperience} from '../Actions/index'
 
 
 function OrganizerHome(props) {
- const [experiences, setExperiences] = useState([])
+ // const [experiences, setExperiences] = useState([])
  //get oranizers experiences on load and on list change
- useEffect(() => {
-  let ignore = false
-   const getExps = api().get(`/api/exp/${props.userId}`)
-  .then(res => {
-   if(!ignore){
-   setExperiences(res.data)
-  }
-   //props.addExperience(res.data)
-  })
+ // useEffect(() => {
+ //  let ignore = false
+ //   const getExps = api().get(`/api/exp/${props.userId}`)
+ //  .then(res => {
+ //   if(!ignore){
+ //   setExperiences(res.data)
+ //  }
+   
+ //  },)
 
-  return () => {
-   ignore = true
-  }
- },[experiences,props.userId])
+ //  return () => {
+ //   ignore = true
+ //  }
+ // },[experiences,props.userId])
 
  useEffect(() => {
   api().get(`/api/exp/${props.userId}`)
@@ -34,12 +34,13 @@ function OrganizerHome(props) {
 
  return (
   <>
+  
   <div style={orgHomeContainer}> 
   <OrgCreateExp userId={props.userId}/> 
   
    <div style={expContainer}>
-   {experiences.map((exp,index) => (
-    <Link to={`/update:${exp.id}`} key={index}><Experience  data={exp} updateExps={setExperiences} experiencesList={experiences} /> </Link>
+   {props.exps && props.exps.map((exp,index) => (
+    <Link to={`/update:${exp.id}`} key={index}><Experience  data={exp} experiencesList={props.exps}  /> </Link>//updateExps={setExperiences} experiencesList={experiences}
  ))} 
  </div>
  </div>

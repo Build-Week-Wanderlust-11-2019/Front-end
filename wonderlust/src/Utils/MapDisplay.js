@@ -7,18 +7,18 @@ function MapDisplay(props) {
 
  const[viewport, setViewport] = useState({
   
-     latitude: 38.442120,  
-     longitude: -92.391384,
+     latitude: 29.8946952,  
+     longitude: -81.3145395,
      zoom: 5,
      bearing: 0,
      pitch: 0,
      width: 900,
      height: 700,
    })
-
  return (
   <>
   {props.markers &&
+  
   <ReactMapGl
    {...viewport} 
    mapboxApiAccessToken={token}
@@ -26,15 +26,16 @@ function MapDisplay(props) {
    onViewportChange={viewport =>{
    setViewport(viewport)
   }}>
-   {props.markers.map((place,index) => (
+   
+    {props.markers.map((place,index) => (
     <Marker
     key={index}
     latitude={parseFloat(place.experience_lat)}
     longitude={parseFloat(place.experience_long)}
     >
-     <h2 style={color}>{place.experience_title}</h2>
+     <h4 style={color}>{place.experience_title}</h4>
     </Marker>
-   ))}
+   ))} 
 
   </ReactMapGl>
   }

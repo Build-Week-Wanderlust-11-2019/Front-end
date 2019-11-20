@@ -15,7 +15,7 @@ console.log(exp)
 
  return (
   <div style={container}>
-    <OrgUpdateExp />
+    {/* <OrgUpdateExp /> */}
    {/*Larger view of experience when clicked gives this route displaying large map of location.
    */}
     { exp ?

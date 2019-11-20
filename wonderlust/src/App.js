@@ -32,7 +32,7 @@ function App(props) {
   return (
    <>
    <Navigation />
-   <PrivateRoute exact path="/"  component={Login} />
+   <PrivateRoute exact path="/"  component={UserHome} />
    <PrivateRoute exact path="/user" component={UserHome}  />
    <PrivateRoute exact path="/organizer" component={OrganizerHome} />
    <Route exact path="/login" component={Login} />
