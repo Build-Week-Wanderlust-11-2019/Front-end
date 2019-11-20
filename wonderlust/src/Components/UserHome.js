@@ -47,9 +47,10 @@ useEffect(() => {
 
 },[])
 useEffect(() => {
- results.forEach(result => {
-  if(result.experience_lat){setMarkers([...markers,result])}
- })
+ let mark = results.filter( marker => (marker.experience_lat))
+ console.log(mark)
+ setMarkers(mark.filter(marker => (marker.experience_lat.charAt(2) === '.')))
+console.log(markers)
 },[results])
 
 
@@ -63,7 +64,7 @@ useEffect(() => {
     {results.map((exp,index) => (
     <Experience onClick={(e)=> {    }} key={index} data={exp}  /> 
  ))}  
- {/* <MapDisplay markers={markers}/> */}
+  <MapDisplay markers={markers}/> 
     </StyledResDiv> 
     </div>
     : <h1>...Loading</h1>}
