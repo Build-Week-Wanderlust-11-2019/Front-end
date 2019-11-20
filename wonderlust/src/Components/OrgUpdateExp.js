@@ -1,6 +1,5 @@
-import React from 'react';
-import MapRender from '..Utils/MapRender'
-import api from '../Uitil/AxiosAuth'
+import React,{useState} from 'react';
+import api from '../Utils/AxiosAuth'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateExperience } from '../Actions/index'
@@ -23,10 +22,10 @@ function OrgUpdateExp(props) {
     })
 
     // change handler
-    function updateExperience(e) {
-        const value = e.target.value
-        setTerm(value)
-    }
+    // function updateExperience(e) {
+    //     const value = e.target.value
+    //     setTerm(value)
+    // }
     function createChangeHandler(e) {
         const value = e.target.value
         setUpdateExperience({
@@ -50,7 +49,7 @@ function OrgUpdateExp(props) {
     }
 
 
-    function updateExperience(experience) {
+    function supdateExperience(experience) {
         api().post(`/api/org/${props.userId}/exp`, experience)
             .then(res => {
                 props.updateExperience(res.data)
