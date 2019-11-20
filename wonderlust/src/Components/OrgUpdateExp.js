@@ -67,12 +67,12 @@ function OrgUpdateExp(props) {
                     .catch(err => {
                         console.log(err)
                     })
-            }
+            })
+
+           }
 
 
-
-
-
+           
 
     // submit handler
 
@@ -83,7 +83,7 @@ function OrgUpdateExp(props) {
                     <input
                         type="text"
                         name="location"
-                        placeholder={searchChange}
+                        placeholder={"searchChange"}
                     />
                     <button type="submit">Get location</button>
                     <br />
