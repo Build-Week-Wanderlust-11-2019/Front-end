@@ -68,9 +68,9 @@ console.log(markers)
    {/* <StyledResDiv>
     {results.map((exp,index) => (
     <Experience onClick={(e)=> {    }} key={index} data={exp}  /> 
- ))}  
+ ))} </StyledResDiv>   */}
   <MapDisplay markers={markers}/> 
-    </StyledResDiv>  */}
+    
     </div>
     : <h1>...Loading</h1>}
  </StyledContainerDiv>
