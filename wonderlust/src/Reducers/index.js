@@ -1,6 +1,7 @@
-import { ADDORGID, ISORG, USERNAME, ADDEXPERIENCE, GETALLEXPS} from "../Actions/index"
+import { ADDORGID, ISORG, USERNAME, ADDEXPERIENCE, GETALLEXPS, UPDATEEXPS,LOADING} from "../Actions/index"
 
 const initialState = {
+ loading:false,
  allExperiences:[],
  experiences:[],
  user:{
@@ -14,6 +15,13 @@ export function reducer(state = initialState, action) {
  switch (action.type) {
  
 
+
+   case LOADING: {
+    return {
+     ...state,
+     loading:true
+    }
+   }
    case USERNAME:{
     
     return{
@@ -56,6 +64,14 @@ export function reducer(state = initialState, action) {
      ...state,
      allExperiences: action.payload
      
+    }
+   }
+   case UPDATEEXPS:{
+    const newArr = state.experiences.filter((exp) => exp.id !== action.payload.id)
+    return {
+     ...state,
+     loading:false,
+     experiences: newArr.concat(action.payload)
     }
    }
   

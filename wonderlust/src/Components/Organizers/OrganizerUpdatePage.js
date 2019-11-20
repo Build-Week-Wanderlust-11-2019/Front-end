@@ -6,16 +6,17 @@ import MapRender from '../../Utils/MapRender'
 function OrganizerUpdatePage(props) {
  
  const [exp, setExp] = useState()
+ const id = parseInt(props.match.params.id.replace(':', ''))
+
  useEffect(() => {
  setExp(props.experiences.filter(id  => id.id === parseInt(props.match.params.id.replace(':', '')))[0])
  
- },[] )
+ },[props.match.params.id,props.experiences] )
  
-console.log(exp)
 
  return (
   <div style={container}>
-    {/* <OrgUpdateExp /> */}
+    <OrgUpdateExp id={id} /> 
    {/*Larger view of experience when clicked gives this route displaying large map of location.
    */}
     { exp ?

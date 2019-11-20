@@ -5,44 +5,50 @@ import { connect } from "react-redux"
 import {withRouter,Link } from 'react-router-dom'
 import Experience from '../Experience'
 import {addExperience} from '../../Actions/index'
-
+import PagContainer from '../PagContainer'
+import Pagination from '../Pagination'
 
 function OrganizerHome(props) {
- // const [experiences, setExperiences] = useState([])
- //get oranizers experiences on load and on list change
- // useEffect(() => {
- //  let ignore = false
- //   const getExps = api().get(`/api/exp/${props.userId}`)
- //  .then(res => {
- //   if(!ignore){
- //   setExperiences(res.data)
- //  }
-   
- //  },)
+const [loading, setLoading] = useState()
+const [currentPage,setCurrentPage] = useState(1)
+const [expsPerPg,setExpsPerPg] = useState(4)
 
- //  return () => {
- //   ignore = true
- //  }
- // },[experiences,props.userId])
+
+const [exps, setExps] = useState([])
 
  useEffect(() => {
-  api().get(`/api/exp/${props.userId}`)
-  .then(res => {
-    props.addExperience(res.data)
-  })
- },[])
+  const getExps = async () => {
+  setLoading(true)
+  const res = await api().get(`/api/exp/${props.userId}`)
+  props.addExperience(res.data)
+  setExps(res.data)
+  setLoading(false)
+  }
+  getExps()
+ },[exps.length])
 
+const indexOfLastExp = currentPage * expsPerPg
+const indexOfFirstExp = indexOfLastExp - expsPerPg
+const currentExpGrp = exps.slice(indexOfFirstExp,indexOfLastExp)
+
+//changeing page
+const paginate = (pageNumber) => {
+  setCurrentPage(pageNumber)
+}
+ 
  return (
   <>
   
-  <div style={orgHomeContainer}> 
+  <div style={homeContainer}> 
   <OrgCreateExp userId={props.userId}/> 
   
-   <div style={expContainer}>
-   {props.exps && props.exps.map((exp,index) => (
-    <Link to={`/update:${exp.id}`} key={index}><Experience  data={exp} experiencesList={props.exps}  /> </Link>//updateExps={setExperiences} experiencesList={experiences}
- ))} 
- </div>
+  
+ 
+    <div style={pagGroup}><PagContainer exps={currentExpGrp} loading={loading}/>
+   <div style={pag}> 
+    <Pagination expsPerPg={expsPerPg} totalExps={exps.length} paginate={paginate} />
+  </div>
+  </div>
  </div>
    </>
  )
@@ -62,15 +68,19 @@ export default withRouter(connect(
  mapStateToProps,
  mapDispatchToProps
 )( OrganizerHome))
-const orgHomeContainer = {
- display:"flex",
+const homeContainer = {
+  width:"100%",
+  display:"flex",
 
 }
-
-const expContainer = {
- width:"70%",
- display:"column",
- 
- justifyContent:"center"
-
+const pag={
+  width:"100%",
+  display:"flex",
+  padding:"10px",
+  justifyContent:"center"
+}
+const pagGroup={
+  display:"flex",
+  flexDirection:"column",
+  width:"100%"
 }

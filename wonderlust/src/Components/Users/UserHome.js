@@ -8,6 +8,7 @@ import {getAllExps} from '../../Actions'
 import Experience from '../Experience'
 import MapDisplay from '../../Utils/MapDisplay'
 import Weather from '../../Utils/Weather';
+import PagSystem from '../PagSystem'
 
 const StyledResDiv = styled.div`
 display:flex;
@@ -30,13 +31,15 @@ display:flex:
 function UserHome(props) {
 const [results, setResults] = useState([])
 const [markers, setMarkers] = useState([])
+const [loading, setLoading] = useState()
 
 function resetList(){
- api().get(`/api/exp`)
+  setLoading(true)
+  api().get(`/api/exp`)
  .then(res => {
    props.getAllExps(res.data)
    setResults(res.data)
- 
+   setLoading(false)
  })
   
 }
@@ -52,7 +55,7 @@ useEffect(() => {
  console.log(mark)
  setMarkers(mark.filter(marker => (marker.experience_lat.charAt(2) === '.')))
 console.log(markers)
-},[results])
+},[])
 
 
  return (
@@ -61,12 +64,13 @@ console.log(markers)
   
   <div>
    <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
-   <StyledResDiv>
+   <PagSystem loading={loading} exps={results}/>
+   {/* <StyledResDiv>
     {results.map((exp,index) => (
     <Experience onClick={(e)=> {    }} key={index} data={exp}  /> 
  ))}  
   <MapDisplay markers={markers}/> 
-    </StyledResDiv> 
+    </StyledResDiv>  */}
     </div>
     : <h1>...Loading</h1>}
  </StyledContainerDiv>
