@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import api from '../Utils/AxiosAuth'
+import api from '../../Utils/AxiosAuth'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { addExperience } from '../Actions/index'
+import { addExperience } from '../../Actions/index'
 import styled from 'styled-components';
 
 

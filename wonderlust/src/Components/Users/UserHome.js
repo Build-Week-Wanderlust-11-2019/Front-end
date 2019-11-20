@@ -1,12 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import UserSearch from './UserSearch'
 import styled from 'styled-components';
-import api from '../Utils/AxiosAuth'
+import api from '../../Utils/AxiosAuth'
 import {connect} from 'react-redux'
 import {withRouter,Link } from 'react-router-dom'
-import {getAllExps} from '../Actions'
-import Experience from './Experience'
-import MapDisplay from '../Utils/MapDisplay'
+import {getAllExps} from '../../Actions'
+import Experience from '../Experience'
+import MapDisplay from '../../Utils/MapDisplay'
+import Weather from '../../Utils/Weather';
 
 const StyledResDiv = styled.div`
 display:flex;

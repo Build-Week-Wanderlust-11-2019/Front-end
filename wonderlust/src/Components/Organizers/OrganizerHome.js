@@ -1,10 +1,10 @@
 import React,{ useState, useEffect } from 'react';
-import api from '../Utils/AxiosAuth'
+import api from '../../Utils/AxiosAuth'
 import OrgCreateExp from './OrgCreateExp'
 import { connect } from "react-redux"
 import {withRouter,Link } from 'react-router-dom'
-import Experience from './Experience'
-import {addExperience} from '../Actions/index'
+import Experience from '../Experience'
+import {addExperience} from '../../Actions/index'
 
 
 function OrganizerHome(props) {

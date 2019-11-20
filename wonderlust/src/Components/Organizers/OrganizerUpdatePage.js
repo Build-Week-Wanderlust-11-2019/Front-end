@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import OrgUpdateExp from './OrgUpdateExp'
-import MapRender from '../Utils/MapRender'
+import MapRender from '../../Utils/MapRender'
 function OrganizerUpdatePage(props) {
  
  const [exp, setExp] = useState()

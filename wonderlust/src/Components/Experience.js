@@ -1,6 +1,36 @@
-import React from 'react';
+import React ,{ useState } from 'react';
+import Weather from '../Utils/Weather'
+import axios from 'axios'
+
 
 function Experience(props) {
+let weather
+const [weatherImage, setWeatherImage] = useState()
+  
+  if(props.data.experience_lat && props.data.experience_lat.charAt(2) === '.'){
+
+    axios 
+    .get(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=${props.data.experience_lat},${props.data.experience_long}`)
+.then(res => {
+axios
+.get(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${res.data[0].woeid}`)
+.then(res => {
+  weather = res.data
+  console.log(weather)
+})
+})
+.catch(err => {
+  console.log(err)
+})
+  }
+
+
+
+
+
+
+
+
  return (
   <div>
    {/*display experience img, description, date 
@@ -10,12 +40,12 @@ function Experience(props) {
    </div>
    <button>Delete</button>
    */}
-   {props.data &&
+   {weather &&
    <div style={expCard}>
     <p>{props.data.experience_title}</p>
     <p>{props.data.experience_desc}</p>
     <p>{props.data.date}</p>
-    
+    <Weather weather={weather.consolidated_weather[0].weather_state_abbr}/>
    </div>
    }
   </div>

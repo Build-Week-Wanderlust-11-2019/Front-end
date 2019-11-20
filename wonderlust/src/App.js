@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
-import Navigation from './Components/Navigation'
-import OrganizerHome from './Components/OrganizerHome'
+import Navigation from './Components/Navigation/Navigation'
+import OrganizerHome from './Components/Organizers/OrganizerHome'
 import Login from './Components/Login'
 import PrivateRoute from './Components/PrivateRoute'
 import {connect } from "react-redux"
 import {withRouter} from 'react-router-dom'
 import { orgID, isOrg} from './Actions/index'
-import Home from './Components/Home'
-import OrganizerUpdatePage from './Components/OrganizerUpdatePage';
-import UserHome from './Components/UserHome'
+import OrganizerUpdatePage from './Components/Organizers/OrganizerUpdatePage';
+import UserHome from './Components/Users/UserHome'
+import Footer from './Components/Footer'
 
 
 
@@ -37,6 +37,7 @@ function App(props) {
    <PrivateRoute exact path="/organizer" component={OrganizerHome} />
    <Route exact path="/login" component={Login} />
    <PrivateRoute exact path="/update:id" component={OrganizerUpdatePage} />
+   <Footer/>
    </>
   );
 }
