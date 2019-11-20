@@ -41,6 +41,7 @@ function Navigation(props) {
                 <DropdownItem header></DropdownItem>
                 <DropdownItem divider/>
                 <DropdownItem><Link to="home"><div>Home</div></Link></DropdownItem>
+                <DropdownItem><Link to="organizer"><div>Organizer</div></Link></DropdownItem>
                 <DropdownItem><Link to="About"><div>About</div></Link></DropdownItem>
                 <DropdownItem onClick={logOut}>Log Out</DropdownItem>
             </DropdownMenu>
