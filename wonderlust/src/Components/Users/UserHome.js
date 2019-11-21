@@ -65,10 +65,7 @@ console.log(markers)
   <div>
    <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
    <PagSystem loading={loading} exps={results} user={true}/>
-   {/* <StyledResDiv>
-    {results.map((exp,index) => (
-    <Experience onClick={(e)=> {    }} key={index} data={exp}  /> 
- ))} </StyledResDiv>   */}
+   
   <MapDisplay markers={markers}/> 
     
     </div>
