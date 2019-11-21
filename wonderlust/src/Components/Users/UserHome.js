@@ -55,7 +55,7 @@ useEffect(() => {
  console.log(mark)
  setMarkers(mark.filter(marker => (marker.experience_lat.charAt(2) === '.')))
 console.log(markers)
-},[])
+},[results.length])
 
 
  return (
