@@ -12,6 +12,8 @@ const indexOfLastExp = currentPage * expsPerPg
 const indexOfFirstExp = indexOfLastExp - expsPerPg
 const currentExpGrp = exps.slice(indexOfFirstExp,indexOfLastExp)
 
+
+
 const paginate = (pageNumber) => {
  setCurrentPage(pageNumber)
 }

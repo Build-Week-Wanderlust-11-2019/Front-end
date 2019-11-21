@@ -26,10 +26,12 @@ function OrganizerHome(props) {
 
   return (
     <>
+    {props.exps &&
       <div style={homeContainer}>
         <OrgCreateExp userId={props.userId} />
-        <PagSystem exps={exps} user={false} loading={loading} />
+        <PagSystem exps={props.exps} user={false} loading={loading} />
       </div>
+      }
     </>
   );
 }
