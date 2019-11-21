@@ -64,8 +64,8 @@ console.log(markers)
   { markers ? 
   
   <div>
-    <Usercontact/>
    <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
+    <Usercontact/>
    <PagSystem loading={loading} exps={results} user={true}/>
    
   <MapDisplay markers={markers}/> 
