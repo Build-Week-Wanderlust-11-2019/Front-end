@@ -9,6 +9,7 @@ import Experience from '../Experience'
 import MapDisplay from '../../Utils/MapDisplay'
 import Weather from '../../Utils/Weather';
 import PagSystem from '../PagSystem'
+import Usercontact from '../Users/Usercontact'
 
 const StyledResDiv = styled.div`
 display:flex;
@@ -63,11 +64,11 @@ console.log(markers)
   { markers ? 
   
   <div>
+    <Usercontact/>
    <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
    <PagSystem loading={loading} exps={results} user={true}/>
    
   <MapDisplay markers={markers}/> 
-    
     </div>
     : <h1>...Loading</h1>}
  </StyledContainerDiv>
