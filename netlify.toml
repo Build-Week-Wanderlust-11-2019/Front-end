@@ -3,7 +3,7 @@
   publish="/build"
   base = "/wonderlust"
 
-  [[redirects]]
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
