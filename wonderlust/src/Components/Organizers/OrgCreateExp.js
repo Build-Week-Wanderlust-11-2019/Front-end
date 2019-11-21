@@ -59,7 +59,8 @@ function OrgCreateExp(props) {
           .get(`/api/exp/${props.userId}`)
           .then(res => {
             props.addExperience(res.data);
-            props.updateExps(props.experiencesList);
+            // props.updateExps(props.experiencesList);
+            console.log(res.data)
           })
           .catch(err => {
             console.log(err);
