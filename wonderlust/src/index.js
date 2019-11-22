@@ -13,9 +13,24 @@ const rootReducer = combineReducers({
  user:userReducer
 //
 })
+const createLogActionStackTraceMiddleware = (actionTypes = []) => {
+ const logActionStackTraceMiddleware = storeAPI => next => action => {
+     if(action.type && actionTypes.includes(action.type)) {
+         console.trace(`Action: ${action.type}`);
+     }
+
+     return next(action);
+ }
+
+ return logActionStackTraceMiddleware;
+}
+
+const stackTraceMiddleware = createLogActionStackTraceMiddleware(["SUCCESS", "ADDUSER"]);
 
 const store = createStore(rootReducer, compose(
- applyMiddleware(thunk,logger),
+
+ applyMiddleware(thunk,logger,stackTraceMiddleware),
+
  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
 ),
 

@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import api from "../../Utils/AxiosAuth";
 import OrgCreateExp from "./OrgCreateExp";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
-import Experience from "../Experience";
-import { addExperience } from "../../Actions/index";
-import PagContainer from "../PagContainer";
-import Pagination from "../Pagination";
+import { withRouter} from "react-router-dom";
+import { addExperience,addInfo } from "../../Actions/index";
 import PagSystem from "../PagSystem";
+
 function OrganizerHome(props) {
   const [loading, setLoading] = useState();
 
   const [exps, setExps] = useState([]);
 
+ 
+  
+ 
   useEffect(() => {
+   
     const getExps = async () => {
       setLoading(true);
       const res = await api().get(`/api/exp/${props.userId}`);
@@ -38,12 +40,13 @@ function OrganizerHome(props) {
 
 function mapStateToProps(state) {
   return {
-    userId: state.user.user.orgId,
+   
     exps: state.user.experiences
   };
 }
 const mapDispatchToProps = {
-  addExperience: addExperience
+  addExperience: addExperience,
+  addInfo:addInfo
 };
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(OrganizerHome)
