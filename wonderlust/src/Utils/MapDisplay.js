@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
-import ReactMapGl, {Marker} from 'react-map-gl'
+import ReactMapGl, {Marker, Popup} from 'react-map-gl'
 import { Container, Row, Col } from 'reactstrap';
-
+import mapMarker from '../Assets/mapMarker.png'
 function MapDisplay(props) {
 
  const token = "pk.eyJ1Ijoicm1sZWUwMDAiLCJhIjoiY2szM21qZjZ1MHRkeDNtb2IyNnFvOHFuMiJ9.2WbYxj4f5zia415x9pIYdA"
@@ -13,10 +13,24 @@ function MapDisplay(props) {
      zoom: 5,
      bearing: 0,
      pitch: 0,
-     width: "1920px",
-     height:window.innerHeight
+     width: window.innerWidth,
+     height:"70vh"
 
    })
+
+   
+   function getWindowWidth(){
+   setViewport({...viewport,
+    width:window.innerWidth})
+   }
+   
+   useEffect(() => {
+    window.addEventListener('resize', getWindowWidth)
+   
+   },[])
+
+   const[clickedExp,setClickedExp]= useState(null)
+
  return (
   <>
   {props.markers &&
@@ -39,10 +53,35 @@ function MapDisplay(props) {
      latitude={parseFloat(place.experience_lat)}
      longitude={parseFloat(place.experience_long)}
      >
-      <h4 style={color}>{place.experience_title}</h4>
+      
+       <button style={transparent} onClick={(e) => {
+        e.preventDefault();
+        setClickedExp(place)
+       }}>
+        <img className="marker" src={mapMarker} alt="experience marker" />
+        </button>
+      
      </Marker>
     ))} 
- 
+    {clickedExp && 
+    <Popup 
+    latitude={parseFloat(clickedExp.experience_lat)}
+    longitude={parseFloat(clickedExp.experience_long)}
+    onClose={() => {
+     setClickedExp(null)
+    }}
+    >
+
+     <div >
+     
+      <img src={clickedExp.image} alt="experience" />
+      <h3>{clickedExp.experience_title}</h3>
+      <p>{clickedExp.experience_desc}</p>
+
+     </div>
+    </Popup>
+
+    }
    </ReactMapGl>
    </div>
  
@@ -55,4 +94,8 @@ export default MapDisplay;
 const color={color:"white"}
 const fixWidth= {
  overflow:"hidden"
+}
+const transparent ={
+ background:"rgba(0,0,0,0)",
+ border:"none"
 }

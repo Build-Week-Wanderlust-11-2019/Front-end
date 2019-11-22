@@ -3,7 +3,12 @@ import styled from 'styled-components';
 
 
 const StyledContactForm = styled.form`
-border: 3px solid red
+border: 3px solid lightblue;
+position:absolute;
+bottom:4rem;
+right:0;
+left:0;
+
 `
 
 

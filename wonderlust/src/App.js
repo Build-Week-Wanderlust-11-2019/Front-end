@@ -10,7 +10,7 @@ import {addInfo} from './Actions/index'
 import OrganizerUpdatePage from './Components/Organizers/OrganizerUpdatePage';
 import UserHome from './Components/Users/UserHome'
 import Footer from './Components/Footer'
-
+import './App.css'
 
 
 

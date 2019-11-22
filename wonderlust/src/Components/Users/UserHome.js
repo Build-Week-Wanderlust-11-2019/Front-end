@@ -34,6 +34,7 @@ function UserHome(props) {
 const [results, setResults] = useState([])
 const [markers, setMarkers] = useState([])
 const [loading, setLoading] = useState()
+const[display,setDisplay]=useState(false)
 // const[windowWidth, setWinWidth] = useState(window.innerWidth)
 
 // function getWindowWidth(){
@@ -44,7 +45,9 @@ const [loading, setLoading] = useState()
 //  window.addEventListener('resize', getWindowWidth)
 
 // },[])
-
+function mapView(){
+  setDisplay(!display)
+}
 
 
 function resetList(){
@@ -78,17 +81,19 @@ console.log(markers)
   
   { markers ? 
   <div>
-    <div style={mapBack}><MapDisplay  markers={markers}/> </div> 
+   
     <Container fluid ml-0 pl-0>
     <Col sm="4">.
-     <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
+     <UserSearch list={props.exps}  displayMap={mapView} updateRes={setResults} reset={resetList}/>
      </Col>
+      {display ? <div style={mapBack}><MapDisplay  markers={markers}/> </div>
+      : 
      <Col xs="12">
      <PagSystem loading={loading} exps={results} user={true}/>
      </Col>
-   
-     <Usercontact/>    
-        {/*  */}
+      }
+     <Usercontact />    
+       
   
      </Container> 
   </div>
@@ -120,7 +125,7 @@ const mapBack={
   top:"3rem",
   left:"0",
   right: "0",
-bottom: "0",
+  
   padding:"0",
   margin:"auto"
 }
