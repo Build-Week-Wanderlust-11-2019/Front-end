@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Spinner from '../src/Spinner';
 
 const UseSpinner = prop => {
-const [visible, setVisible] = useState(initialState: false);
+const [visible, setVisible] = useState(false);
 
 const showSpinner = () => setVisible(true);
 const hideSpinner = () => setVisible(false);
