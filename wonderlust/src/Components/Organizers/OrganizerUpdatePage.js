@@ -3,6 +3,10 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import OrgUpdateExp from './OrgUpdateExp'
 import MapRender from '../../Utils/MapRender'
+import { Container, Row, Col } from 'reactstrap';
+import {Card, CardImg, CardText, CardBody,
+CardTitle, CardSubtitle, Button
+} from 'reactstrap';
 function OrganizerUpdatePage(props) {
  
  const [exp, setExp] = useState()
@@ -20,15 +24,17 @@ function OrganizerUpdatePage(props) {
    {/*Larger view of experience when clicked gives this route displaying large map of location.
    */}
     { exp ?
-    <div style={expCard}>
-     <p>{exp.experience_title}</p>
-     <div><img src={exp.image} alt="" /></div>
-    <p>{exp.experience_desc}</p>
-    <p>{exp.date}</p>
-    <p>{exp.experience_lat}</p>
+    <Card style={expCard}>
+      <CardImg top width="100%" src={exp.image} alt="" />
+     <CardBody>
+       <CardTitle>{exp.experience_title}</CardTitle>       
+       <CardSubtitle>Date of exp-{exp.date} </CardSubtitle>
+       <CardSubtitle>Organizer-{exp.org_name}</CardSubtitle>
+      <CardText>{exp.experience_desc}</CardText>
+     </CardBody>
       <MapRender lat={parseInt(exp.experience_lat)} long={parseInt(exp.experience_long)} /> 
      
-    </div> :null}
+    </Card> :null}
   </div>
  );
 }

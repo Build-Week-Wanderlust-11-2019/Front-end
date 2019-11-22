@@ -35,7 +35,7 @@ let weather
 
 
  return (
-  <div style={expCard}>
+  <div >
    {/*display experience img, description, date 
    <img src={} alt="destination >"
    <div>
@@ -44,9 +44,9 @@ let weather
    <button>Delete</button>
    */}
    {props.data &&
-   <Card>
+   <Card style={expCard}>
     <CardImg top width="100%" src={props.data.image} alt="Card image cap" />
-    <CardBody>
+    <CardBody style={cardCont}>
      <CardTitle>{props.data.experience_title}</CardTitle>
      <CardSubtitle>Organizer - {props.data.org_name} Date - {props.data.date}</CardSubtitle>
      <CardText>{props.data.experience_desc}</CardText>
@@ -62,8 +62,13 @@ let weather
 export default Experience;
 const expCard = {
  width:"300px",
-
+ background:"rgba(0,0,0,.8)",
  padding:"20px",
  margin:"20px",
 
+}
+const cardCont={
+ color:"white",
+ fontSize:"1.2rem",
+ borderRadius:"2px"
 }

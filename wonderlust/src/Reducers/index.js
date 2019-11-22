@@ -1,4 +1,4 @@
-import { ADDORGID, ISORG,ADDINFO,SUCCESS,ADDUSER, ADDEXPERIENCE, GETALLEXPS, UPDATEEXPS,LOADING} from "../Actions/index"
+import { DELETE, ADDORGID, ISORG,ADDINFO,SUCCESS,ADDUSER, ADDEXPERIENCE, GETALLEXPS, UPDATEEXPS,LOADING} from "../Actions/index"
 
 const initialState = {
  loading:false,
@@ -23,6 +23,11 @@ export function reducer(state = initialState, action) {
       orgId:action.payload.orgId,
       isOrg:action.payload.isOrg
       }
+    }
+   }
+   case DELETE:{
+    return {
+     
     }
    }
 

@@ -34,6 +34,18 @@ function UserHome(props) {
 const [results, setResults] = useState([])
 const [markers, setMarkers] = useState([])
 const [loading, setLoading] = useState()
+// const[windowWidth, setWinWidth] = useState(window.innerWidth)
+
+// function getWindowWidth(){
+// setWinWidth(window.innerWidth)
+// }
+
+// useEffect(() => {
+//  window.addEventListener('resize', getWindowWidth)
+
+// },[])
+
+
 
 function resetList(){
   setLoading(true)
@@ -61,22 +73,31 @@ console.log(markers)
 
 
  return (
-  <div>
+ 
+  <>
+  
   { markers ? 
-  <Container>
-  <Col xs="auto">.
-   <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
-   </Col>
-   <Col xs="12">
-   <PagSystem loading={loading} exps={results} user={true}/>
-   </Col>
-  <MapDisplay markers={markers}/> 
-   <Usercontact/>
-   </Container> 
+  <div>
+    <div style={mapBack}><MapDisplay  markers={markers}/> </div> 
+    <Container fluid ml-0 pl-0>
+    <Col sm="4">.
+     <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
+     </Col>
+     <Col xs="12">
+     <PagSystem loading={loading} exps={results} user={true}/>
+     </Col>
+   
+     <Usercontact/>    
+        {/*  */}
+  
+     </Container> 
+  </div>
+
+   
     : <h1>...Loading</h1>}
+     </>
      
-     
- </div>
+
 )}
 
 function mapStateToProps(state){
@@ -93,3 +114,17 @@ export default withRouter(connect(
  mapStateToProps,
  mapDispatchToProps
 )( UserHome))
+const mapBack={
+  position:"absolute",
+  zIndex:"-1",
+  top:"3rem",
+  left:"0",
+  right: "0",
+bottom: "0",
+  padding:"0",
+  margin:"auto"
+}
+const cont={
+  padding:"0",
+  margin:"0"
+}

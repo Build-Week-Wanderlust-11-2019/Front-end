@@ -22,21 +22,30 @@ function searchChange(e){
 
  return (
   <Container>
-      <Col xs="auto">
+    <Row> 
    <Form onSubmit={(e) => {e.preventDefault();titleSearch(e,searchTerm,props.list)}}>
-       <h4>Search for experiences:</h4>
-    <Input
+       
+  <Col xs="12"> 
+  <h4 style={h4}>Filter by Title:</h4>
+   <Input
     type="text"
     name="search"
     placeholder="search"
     onChange={searchChange}
-/>
-<Button type="submit">Search</Button>
-<Button onClick={(e) => {e.preventDefault(); props.reset()}}>See All</Button>
+/> </Col>
+
+    <Col xs="12" className="mt-2">
+        <Button color="success" size="sm" block type="submit">Search</Button>
+        <Button color="info" size="sm" block onClick={(e) => {e.preventDefault(); props.reset()}}>See All</Button>
+    </Col>
+
    </Form>
-   </Col>
+  </Row>
    </Container>
  );
 }
 
 export default UserSearch;
+const h4={
+    color:"white"
+}
