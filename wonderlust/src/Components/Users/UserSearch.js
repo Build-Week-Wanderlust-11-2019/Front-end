@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Container, Row, Col } from 'reactstrap';
 
 function UserSearch(props) {
 
@@ -19,20 +21,21 @@ function searchChange(e){
 }
 
  return (
-  <div>
-
-   <form onSubmit={(e) => {e.preventDefault();titleSearch(e,searchTerm,props.list)}}>
+  <Container>
+      <Col xs="auto">
+   <Form onSubmit={(e) => {e.preventDefault();titleSearch(e,searchTerm,props.list)}}>
        <h4>Search for experiences:</h4>
-    <input
+    <Input
     type="text"
     name="search"
     placeholder="search"
     onChange={searchChange}
 />
-<button type="submit">Search</button>
-<button onClick={(e) => {e.preventDefault(); props.reset()}}>See All</button>
-   </form>
-  </div>
+<Button type="submit">Search</Button>
+<Button onClick={(e) => {e.preventDefault(); props.reset()}}>See All</Button>
+   </Form>
+   </Col>
+   </Container>
  );
 }
 

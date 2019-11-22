@@ -10,22 +10,23 @@ import MapDisplay from '../../Utils/MapDisplay'
 import Weather from '../../Utils/Weather';
 import PagSystem from '../PagSystem'
 import Usercontact from '../Users/Usercontact'
+import { Container, Row, Col } from 'reactstrap';
 
-const StyledResDiv = styled.div`
-display:flex;
-flex-direction:column;
-align-items:center;
-padding:20px;
-margin:20px;
+// const StyledResDiv = styled.div`
+// display:flex;
+// flex-direction:column;
+// align-items:center;
+// padding:20px;
+// margin:20px;
 
 
-`
+// `
 
-const StyledContainerDiv = styled.div`
-width:65%;
-display:flex:
+// const StyledContainerDiv = styled.div`
+// width:65%;
+// display:flex:
 
-`
+// `
 
 
 
@@ -60,20 +61,22 @@ console.log(markers)
 
 
  return (
-  <StyledContainerDiv div>
-  { markers ? 
-  
   <div>
+  { markers ? 
+  <Container>
+  <Col xs="auto">.
    <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
-   
+   </Col>
+   <Col xs="12">
    <PagSystem loading={loading} exps={results} user={true}/>
-   
+   </Col>
   <MapDisplay markers={markers}/> 
-    </div>
+   <Usercontact/>
+   </Container> 
     : <h1>...Loading</h1>}
-     <Usercontact/>
- </StyledContainerDiv>
- 
+     
+     
+ </div>
 )}
 
 function mapStateToProps(state){

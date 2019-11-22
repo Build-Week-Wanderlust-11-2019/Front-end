@@ -72,9 +72,9 @@ function OrgCreateExp(props) {
 
   return (
     <StyledExpCreator>
-      <div style={formContainer}>
-        <div style={mapStyle}>
-          <Form
+      <div >
+        <div >
+          <Form style={spacing}
             onSubmit={e => {
               searchLocation(e, searchTerm, key);
             }}
@@ -86,6 +86,7 @@ function OrgCreateExp(props) {
               placeholder="location"
               onChange={searchChange}
             />
+            <br />
             <button type="submit">Get location</button>
 
             <br />
@@ -117,6 +118,7 @@ function OrgCreateExp(props) {
               placeholder="imageurl"
               onChange={createChangeHandler}
             />
+            <br />
             <Button
               onClick={e => {
                 e.preventDefault();
@@ -138,12 +140,7 @@ const dispatchStateToProps = {
 };
 export default connect(null, dispatchStateToProps)(OrgCreateExp);
 
-const mapStyle = {
-  height: "200px",
-  width: "100%"
-};
-const formContainer = {
-  height: "100vh",
-  width: "45%",
-  background: "lightgrey"
-};
+
+const spacing={
+    margin:"10px"
+}

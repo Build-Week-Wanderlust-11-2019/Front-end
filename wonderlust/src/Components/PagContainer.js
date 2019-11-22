@@ -27,7 +27,7 @@ const pagContainer = {
  display:"flex",
  flexWrap:"wrap",
  justifyContent:"space-around",
- border:"2px solid black",
- height:"500px"
+ 
+
 
 }

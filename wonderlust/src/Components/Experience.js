@@ -35,7 +35,7 @@ let weather
 
 
  return (
-  <div>
+  <div style={expCard}>
    {/*display experience img, description, date 
    <img src={} alt="destination >"
    <div>
@@ -61,8 +61,8 @@ let weather
 
 export default Experience;
 const expCard = {
- width:"200px",
- border:"1px solid black",
+ width:"300px",
+
  padding:"20px",
  margin:"20px",
 
