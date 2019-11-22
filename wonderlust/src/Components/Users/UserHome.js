@@ -65,15 +65,16 @@ console.log(markers)
   
   <div>
    <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
-    <Usercontact/>
+   
    <PagSystem loading={loading} exps={results} user={true}/>
    
   <MapDisplay markers={markers}/> 
     </div>
     : <h1>...Loading</h1>}
+     <Usercontact/>
  </StyledContainerDiv>
- );
-}
+ 
+)}
 
 function mapStateToProps(state){
  return{

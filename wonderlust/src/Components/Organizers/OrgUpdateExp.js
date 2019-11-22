@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import axios from "axios";
 import { connect } from "react-redux";
-import { updateExp } from "../../Actions/index";
+import { updateExp, deleteExp } from "../../Actions/index";
 import { withRouter } from "react-router-dom";
 
 function OrgUpdateExp(props) {
   const [searchTerm, setTerm] = useState("");
   const key = "4ac18f2821024e6b8bb8e5643e56574a";
-
+  const orgId = localStorage.getItem('id')
   //state for form
   const [newUpdateExperience, setUpdateExperience] = useState({
     experience_title: "",
@@ -45,6 +45,7 @@ function OrgUpdateExp(props) {
       });
   }
 
+  
   // submit handler
 
   return (
@@ -108,16 +109,32 @@ function OrgUpdateExp(props) {
         >
           update
         </Button>
+        <Button
+          onClick={e => {
+            e.preventDefault();
+            console.log(props.orgId)
+            props.deleteExp(orgId, props.id);
+            props.history.push('/organizer')
+          }}
+        >
+          delete
+        </Button>
       </Form>
     </div>
   );
 }
+function mapStateToProps(state){
+  return {
+   
+  }
+}
 
 const mapDispatchToProps = {
-  updateExp: updateExp
+  updateExp: updateExp,
+  deleteExp:deleteExp
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(OrgUpdateExp));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OrgUpdateExp));
 const style = {
   width: "45%",
   height: "100%",

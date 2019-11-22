@@ -16,7 +16,7 @@ function OrganizerUpdatePage(props) {
 
  return (
   <div style={container}>
-    <OrgUpdateExp id={id} /> 
+    <OrgUpdateExp  id={id} /> 
    {/*Larger view of experience when clicked gives this route displaying large map of location.
    */}
     { exp ?
@@ -34,7 +34,8 @@ function OrganizerUpdatePage(props) {
 }
 function mapStateToProps(state) {
   return {
-    experiences:state.user.experiences
+    experiences:state.user.experiences,
+   
   }
 }
 export default withRouter(connect(

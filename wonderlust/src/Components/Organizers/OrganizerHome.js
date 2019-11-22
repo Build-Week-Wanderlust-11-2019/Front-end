@@ -15,7 +15,7 @@ function OrganizerHome(props) {
   
  
   useEffect(() => {
-   
+    
     const getExps = async () => {
       setLoading(true);
       const res = await api().get(`/api/exp/${props.userId}`);
@@ -42,6 +42,7 @@ function mapStateToProps(state) {
   return {
    
     exps: state.user.experiences
+   
   };
 }
 const mapDispatchToProps = {
