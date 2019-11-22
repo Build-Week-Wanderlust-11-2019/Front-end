@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import PagContainer from './PagContainer'
 import Pagination from './Pagination'
+import { Container, Row, Col } from 'reactstrap';
 
 function PagSystem({exps,loading,user}) {
 

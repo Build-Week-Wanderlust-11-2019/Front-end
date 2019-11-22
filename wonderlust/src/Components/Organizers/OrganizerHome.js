@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { withRouter} from "react-router-dom";
 import { addExperience,addInfo } from "../../Actions/index";
 import PagSystem from "../PagSystem";
+import { Container, Row, Col } from 'reactstrap';
 
 function OrganizerHome(props) {
   const [loading, setLoading] = useState();
@@ -29,10 +30,12 @@ function OrganizerHome(props) {
   return (
     <>
     {props.exps &&
-      <div style={homeContainer}>
-        <OrgCreateExp userId={props.userId} />
-        <PagSystem exps={props.exps} user={false} loading={loading} />
-      </div>
+     <Container style={cont}>
+       <Row>
+        <Col xs='4'><OrgCreateExp userId={props.userId} /></Col>
+        <Col xs='8'><PagSystem exps={props.exps} user={false} loading={loading} /></Col>
+     </Row>
+      </Container>
       }
     </>
   );
@@ -52,18 +55,6 @@ const mapDispatchToProps = {
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(OrganizerHome)
 );
-const homeContainer = {
-  width: "100%",
-  display: "flex"
-};
-const pag = {
-  width: "100%",
-  display: "flex",
-  padding: "10px",
-  justifyContent: "center"
-};
-const pagGroup = {
-  display: "flex",
-  flexDirection: "column",
-  width: "100%"
-};
+const cont={
+  height:"100vh"
+}

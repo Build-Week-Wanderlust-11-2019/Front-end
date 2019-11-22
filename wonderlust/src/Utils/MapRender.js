@@ -37,7 +37,7 @@ constructor(props) {
        <div >
        <MapGL 
        {...viewport}
-       mapStyle="mapbox://styles/mapbox/streets-v11"
+       mapStyle="mapbox://styles/rmlee000/ck36cadm04cqu1cp6uy22ci98"
        mapboxApiAccessToken={token}>
        <div className="nav" style={navStyle}>
          <NavigationControl onViewportChange={(viewport) => this.setState({viewport})}/>

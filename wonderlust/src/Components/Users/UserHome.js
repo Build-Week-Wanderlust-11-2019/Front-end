@@ -10,22 +10,23 @@ import MapDisplay from '../../Utils/MapDisplay'
 import Weather from '../../Utils/Weather';
 import PagSystem from '../PagSystem'
 import Usercontact from '../Users/Usercontact'
+import { Container, Row, Col } from 'reactstrap';
 
-const StyledResDiv = styled.div`
-display:flex;
-flex-direction:column;
-align-items:center;
-padding:20px;
-margin:20px;
+// const StyledResDiv = styled.div`
+// display:flex;
+// flex-direction:column;
+// align-items:center;
+// padding:20px;
+// margin:20px;
 
 
-`
+// `
 
-const StyledContainerDiv = styled.div`
-width:65%;
-display:flex:
+// const StyledContainerDiv = styled.div`
+// width:65%;
+// display:flex:
 
-`
+// `
 
 
 
@@ -33,6 +34,18 @@ function UserHome(props) {
 const [results, setResults] = useState([])
 const [markers, setMarkers] = useState([])
 const [loading, setLoading] = useState()
+// const[windowWidth, setWinWidth] = useState(window.innerWidth)
+
+// function getWindowWidth(){
+// setWinWidth(window.innerWidth)
+// }
+
+// useEffect(() => {
+//  window.addEventListener('resize', getWindowWidth)
+
+// },[])
+
+
 
 function resetList(){
   setLoading(true)
@@ -60,20 +73,31 @@ console.log(markers)
 
 
  return (
-  <StyledContainerDiv div>
-  { markers ? 
-  
-  <div>
-   <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
-   
-   <PagSystem loading={loading} exps={results} user={true}/>
-   
-  <MapDisplay markers={markers}/> 
-    </div>
-    : <h1>...Loading</h1>}
-     <Usercontact/>
- </StyledContainerDiv>
  
+  <>
+  
+  { markers ? 
+  <div>
+    <div style={mapBack}><MapDisplay  markers={markers}/> </div> 
+    <Container fluid ml-0 pl-0>
+    <Col sm="4">.
+     <UserSearch list={props.exps} updateRes={setResults} reset={resetList}/>
+     </Col>
+     <Col xs="12">
+     <PagSystem loading={loading} exps={results} user={true}/>
+     </Col>
+   
+     <Usercontact/>    
+        {/*  */}
+  
+     </Container> 
+  </div>
+
+   
+    : <h1>...Loading</h1>}
+     </>
+     
+
 )}
 
 function mapStateToProps(state){
@@ -90,3 +114,17 @@ export default withRouter(connect(
  mapStateToProps,
  mapDispatchToProps
 )( UserHome))
+const mapBack={
+  position:"absolute",
+  zIndex:"-1",
+  top:"3rem",
+  left:"0",
+  right: "0",
+bottom: "0",
+  padding:"0",
+  margin:"auto"
+}
+const cont={
+  padding:"0",
+  margin:"0"
+}

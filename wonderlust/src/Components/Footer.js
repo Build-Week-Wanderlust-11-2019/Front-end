@@ -9,6 +9,10 @@ color: white;
 height:3rem;
 background-color: black;
 text-align: center;
+position:absolute;
+left:0;
+bottom:0;
+right:0;
 `
 
 
