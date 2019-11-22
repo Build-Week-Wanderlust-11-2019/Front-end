@@ -30,3 +30,8 @@
 /* Hides from IE-mac \*/
 * html .clearfix { height: 1%;}
 .clearfix {display: block;}
+
+.marker{
+  height:20px;
+  width:15px;
+}
