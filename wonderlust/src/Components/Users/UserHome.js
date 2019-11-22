@@ -90,9 +90,10 @@ console.log(markers)
       : 
      <Col xs="12">
      <PagSystem loading={loading} exps={results} user={true}/>
+     <Usercontact />    
      </Col>
       }
-     <Usercontact />    
+   
        
   
      </Container> 
