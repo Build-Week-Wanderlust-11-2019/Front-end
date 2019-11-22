@@ -9,10 +9,11 @@ color: white;
 height:3rem;
 background-color: black;
 text-align: center;
-position:absolute;
+position:fixed;
 left:0;
 bottom:0;
 right:0;
+margin-bottom:0;
 `
 
 
