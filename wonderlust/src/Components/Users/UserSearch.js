@@ -22,6 +22,7 @@ function searchChange(e){
   <div>
 
    <form onSubmit={(e) => {e.preventDefault();titleSearch(e,searchTerm,props.list)}}>
+       <h4>Search for experiences:</h4>
     <input
     type="text"
     name="search"
