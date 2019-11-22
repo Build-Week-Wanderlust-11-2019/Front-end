@@ -1,4 +1,4 @@
-import { ADDORGID, ISORG, USERNAME, ADDEXPERIENCE, GETALLEXPS, UPDATEEXPS,LOADING} from "../Actions/index"
+import { ADDORGID, ISORG,ADDINFO,SUCCESS,ADDUSER, ADDEXPERIENCE, GETALLEXPS, UPDATEEXPS,LOADING} from "../Actions/index"
 
 const initialState = {
  loading:false,
@@ -14,7 +14,17 @@ const initialState = {
 export function reducer(state = initialState, action) {
  switch (action.type) {
  
-
+   case ADDINFO:{
+    console.log(action.payload)
+    return{
+     ...state,
+     user: {...state.user,
+      name:action.payload.name,
+      orgId:action.payload.orgId,
+      isOrg:action.payload.isOrg
+      }
+    }
+   }
 
    case LOADING: {
     return {
@@ -22,13 +32,20 @@ export function reducer(state = initialState, action) {
      loading:true
     }
    }
-   case USERNAME:{
+   case SUCCESS: {
+    return {
+     ...state,
+     loading:false,
+    }
+   }
+   case ADDUSER:{
     
     return{
      ...state,
      user: {...state.user,
-     name:action.payload,
-     orgId:null
+     name:action.payload.org_name,
+     orgId:action.payload.id,
+     isOrg:action.payload.isOrg
      }
     }
    }
@@ -37,7 +54,8 @@ export function reducer(state = initialState, action) {
      ...state,     
      user:{ ...state.user,
      orgId: action.payload.id,
-     name: action.payload.org_name
+     name: action.payload.org_name,
+     isOrg:action.payload.isOrg
      }
     }
    }
