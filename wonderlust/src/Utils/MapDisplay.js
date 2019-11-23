@@ -72,9 +72,9 @@ function MapDisplay(props) {
     }}
     >
 
-     <div >
+     <div style={pop}>
      
-      <img src={clickedExp.image} alt="experience" />
+      <img style={imgStyle} src={clickedExp.image} alt="experience" />
       <h3>{clickedExp.experience_title}</h3>
       <p>{clickedExp.experience_desc}</p>
 
@@ -98,4 +98,11 @@ const fixWidth= {
 const transparent ={
  background:"rgba(0,0,0,0)",
  border:"none"
+}
+const imgStyle={
+ width:"100",
+ height:"75px"
+}
+const pop = {
+width:"200px"
 }
