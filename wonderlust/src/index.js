@@ -7,6 +7,8 @@ import logger from "redux-logger"
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import {BrowserRouter} from 'react-router-dom'
 import {reducer as userReducer } from "./Reducers/index"
+import './index.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootReducer = combineReducers({

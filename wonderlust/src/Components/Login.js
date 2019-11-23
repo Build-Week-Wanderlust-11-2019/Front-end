@@ -1,5 +1,5 @@
 import api from "../Utils/AxiosAuth";
-
+import loginBackground from '../Assets/balloon2.webp'
 import React from "react";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledLog = styled.div`
-position: fixed;
+position: absolute;
 top: 50%;
 left: 50%
 transform: translate(-50%, -50%);
@@ -54,10 +54,15 @@ display:flex;
 `
 const StyledIMG = styled.div`
 filter: 
-  brightness(40%) blur(5px);
-width: 100%;
-height: auto;
-position: fixed;
+  brightness(60%) blur(0px);
+width: 110%;
+height:100vh;
+position: relative;
+background-image: url(${loginBackground});
+background-position: center;
+background-repeat: no-repeat;
+margin: -10px -10px -10px -5px;
+z-index:-1;
 `;
 const Styledbutton = styled.button`
 width:50%;
@@ -201,7 +206,7 @@ function Login(props) {
   return (
     <>
       <StyledIMG>
-        <img src="/Map.jpg" alt="background"/>
+        <div></div>
       </StyledIMG>
       <StyledLog>
         <StyledLoginTitle>
