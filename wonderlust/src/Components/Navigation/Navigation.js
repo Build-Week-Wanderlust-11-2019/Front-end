@@ -23,6 +23,9 @@ function Navigation(props) {
     function logOut(event) {
         event.preventDefault()
         localStorage.removeItem("token")
+        localStorage.removeItem("name")
+        localStorage.removeItem("id")
+        localStorage.removeItem("isOrg")
         props.history.push("/login")
     }
 

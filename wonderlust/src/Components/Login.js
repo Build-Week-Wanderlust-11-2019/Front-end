@@ -12,29 +12,74 @@ position: fixed;
 top: 50%;
 left: 50%
 transform: translate(-50%, -50%);
-border: 3px solid black;
-padding: 7rem 4rem 7rem 4rem;
-//background-image: url("/map.jpg")
+padding: 3rem 4rem 7rem 4rem;
+background-image:
+    linear-gradient(
+      #283E4F,
+      #283E4F 65%,
+      #3AC080 100%
+    );
 font-weight: bold;
-`;
+filter:drop-shadow(5px 8px 5px #3d3d3d);
 
+`;
+const StyledForm = styled.form`
+margin-top:4rem
+`
+const Styledinput = styled.input`
+border:none;
+text-align: left;
+ border:none;
+ border-bottom: 2px solid white;
+ background:transparent;
+ color:white;
+ font-size:1.1rem;
+ padding-left:10px;
+`
 const StyledLoginTitle = styled.div`
 text-align: center
 font-size: 30px;
+color:white;
 `;
 
 const Styledlogreg = styled.div`
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  color:white;
+  display:flex;
+  flex-direction:column;
 `;
-
+const StyledButtonCont = styled.div`
+display:flex;
+`
 const StyledIMG = styled.div`
-  opacity: 0.2;
-  filter: alpha(opacity=50);
-  width: 100%;
-  height: auto;
-  position: fixed;
+filter: 
+  brightness(40%) blur(5px);
+width: 100%;
+height: auto;
+position: fixed;
 `;
+const Styledbutton = styled.button`
+width:50%;
+margin:1px;
+padding:0;
+display:inline-block;
+background:#4FC57E;
+border:none;
+font-size:1.2rem;
+filter:drop-shadow(4px 4px 4px #3d3d3d);
+:hover{
+  color:white;
+  background:#283E4F;
+}
+
+`
+
+const StyledCheckCont = styled.div`
+width:50%;
+text-align:left
+display:flex;
+justify-content:space-around;`
 
 function Login(props) {
   const [login, setLogin] = useState({
@@ -156,7 +201,7 @@ function Login(props) {
   return (
     <>
       <StyledIMG>
-        <img src="/Map.jpg" />
+        <img src="/Map.jpg" alt="background"/>
       </StyledIMG>
       <StyledLog>
         <StyledLoginTitle>
@@ -168,8 +213,10 @@ function Login(props) {
           <br />
         </StyledLoginTitle>
         <br />
-        <form>
-          <input
+        <StyledForm>
+        <i class="fa fa-user-o fa-lg" aria-hidden="true"></i>
+
+          <Styledinput
             type="text"
             name="username"
             placeholder="username"
@@ -177,7 +224,9 @@ function Login(props) {
             onChange={handleChange}
           />
           <br />
-          <input
+          <i class="fa fa-unlock fa-lg" aria-hidden="true"></i>
+
+          <Styledinput
             type="password"
             name="password"
             placeholder="password"
@@ -186,7 +235,8 @@ function Login(props) {
           />
           <br />
           <Styledlogreg>
-            <input
+            <StyledCheckCont>
+              <input
               type="checkbox"
               name="organizer"
               onChange={e =>
@@ -194,29 +244,31 @@ function Login(props) {
               }
               checked={login.organizer}
             />
-            Organizer?
-            <br />
-            <br />
-            <button
+            <p>Organizer?</p>
+            </StyledCheckCont>
+            <StyledButtonCont>
+            <Styledbutton 
               onClick={e => {
                 e.preventDefault();
                 register();
               }}
             >
               Register
-            </button>
+            </Styledbutton>
             <br />
             <br />
-            <button
+            
+            <Styledbutton
               onClick={e => {
                 e.preventDefault();
                 loginClick();
               }}
             >
               Login
-            </button>
+            </Styledbutton>
+            </StyledButtonCont>
           </Styledlogreg>
-        </form>
+        </StyledForm>
       </StyledLog>
     </>
   );
