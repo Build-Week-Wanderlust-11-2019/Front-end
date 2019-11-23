@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+ 
+
 }
 
 .App-logo {
@@ -20,16 +22,6 @@
 .App-link {
   color: #09d3ac;
 }
-/* CLEAR FIX*/
-.clearfix:after {content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;}
-.clearfix {display: inline-block;}
-/* Hides from IE-mac \*/
-* html .clearfix { height: 1%;}
-.clearfix {display: block;}
 
 .marker{
   height:20px;
