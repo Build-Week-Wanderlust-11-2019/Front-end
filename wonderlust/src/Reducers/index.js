@@ -1,6 +1,7 @@
-import { DELETE, ADDORGID, ISORG,ADDINFO,SUCCESS,ADDUSER, ADDEXPERIENCE, GETALLEXPS, UPDATEEXPS,LOADING} from "../Actions/index"
+import { DELETE, ERROR, ADDORGID, ISORG,ADDINFO,SUCCESS,ADDUSER, ADDEXPERIENCE, GETALLEXPS, UPDATEEXPS,LOADING} from "../Actions/index"
 
 const initialState = {
+ error:'',
  loading:false,
  allExperiences:[],
  experiences:[],
@@ -30,7 +31,14 @@ export function reducer(state = initialState, action) {
      
     }
    }
-
+   case ERROR: {
+     console.log(action.payload.message)
+    return {
+     ...state,
+     error:action.payload,
+     loading:false
+    }
+   }
    case LOADING: {
     return {
      ...state,
@@ -41,6 +49,7 @@ export function reducer(state = initialState, action) {
     return {
      ...state,
      loading:false,
+     error:null
     }
    }
    case ADDUSER:{

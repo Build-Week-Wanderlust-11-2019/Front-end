@@ -6,7 +6,7 @@ import Login from './Components/Login'
 import PrivateRoute from './Components/PrivateRoute'
 import {connect } from "react-redux"
 import {withRouter} from 'react-router-dom'
-import {addInfo} from './Actions/index'
+import {addInfo,error} from './Actions/index'
 import OrganizerUpdatePage from './Components/Organizers/OrganizerUpdatePage';
 import UserHome from './Components/Users/UserHome'
 import Footer from './Components/Footer'
@@ -54,8 +54,8 @@ function mapStateToProps(state){
   }
 }
 const mapDispatchToProps = {
-addInfo:addInfo
-
+addInfo:addInfo,
+error:error
 }
 export default withRouter(
    connect(
