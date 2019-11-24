@@ -43,7 +43,7 @@ function App(props) {
    <PrivateRoute exact path="/user" component={UserHome}  />
    <PrivateRoute exact path="/organizer" component={OrganizerHome} />
    <Route exact path="/login" component={Login} />
-   <PrivateRoute exact path="/update:id" component={OrganizerUpdatePage} />
+   <PrivateRoute exact path="/update/:id" component={OrganizerUpdatePage} />
    <Footer/>
    </>
   );

@@ -8,8 +8,10 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledLog = styled.div`
+margin-top:25rem;
+margin-bottom:100px;
 position: absolute;
-top: 50%;
+top: 10%;
 left: 50%
 transform: translate(-50%, -50%);
 padding: 3rem 4rem 7rem 4rem;
@@ -17,24 +19,39 @@ background-image:
     linear-gradient(
       #283E4F,
       #283E4F 65%,
-      #3AC080 100%
+      rgb(109, 190, 151) 100%
     );
 font-weight: bold;
 filter:drop-shadow(5px 8px 5px #3d3d3d);
+z-index:2;
 
 `;
 const StyledForm = styled.form`
 margin-top:4rem
 `
+const StyledI = styled.div `
+margin: 5px;
+
+
+
+`
 const Styledinput = styled.input`
+
 border:none;
 text-align: left;
  border:none;
- border-bottom: 2px solid white;
+ border-bottom: 1px solid white;
  background:transparent;
  color:white;
  font-size:1.1rem;
  padding-left:10px;
+ z-index:2;
+ :focus{
+  outline:none;
+  background:transparent;
+ }
+ 
+
 `
 const StyledLoginTitle = styled.div`
 text-align: center
@@ -56,13 +73,15 @@ const StyledIMG = styled.div`
 filter: 
   brightness(60%) blur(0px);
 width: 110%;
-height:100vh;
-position: relative;
+min-height:100vh;
+position:fixed;
+
 background-image: url(${loginBackground});
 background-position: center;
 background-repeat: no-repeat;
-margin: -10px -10px -10px -5px;
-z-index:-1;
+margin: -5rem -10px -2rem -5px;
+overflow-y:auto;
+z-index:-3;
 `;
 const Styledbutton = styled.button`
 width:50%;
@@ -219,7 +238,7 @@ function Login(props) {
         </StyledLoginTitle>
         <br />
         <StyledForm>
-        <i class="fa fa-user-o fa-lg" aria-hidden="true"></i>
+        <StyledI> <i class="fa fa-user-o fa-lg" aria-hidden="true"></i></StyledI>
 
           <Styledinput
             type="text"
@@ -229,7 +248,7 @@ function Login(props) {
             onChange={handleChange}
           />
           <br />
-          <i class="fa fa-unlock fa-lg" aria-hidden="true"></i>
+          <StyledI ><i class="fa fa-unlock fa-lg" aria-hidden="true"></i></StyledI>
 
           <Styledinput
             type="password"

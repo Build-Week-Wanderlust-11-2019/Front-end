@@ -7,7 +7,8 @@ import styled from 'styled-components';
 
 const StyledDrop = styled.div`
 text-align: right;
-background-color: grey;
+background-color: #283E4F;
+color: rgb(214, 150, 120);
 display: flex;
 justify-content: space-between;
 `
@@ -60,3 +61,4 @@ function Navigation(props) {
 }
 
 export default withRouter(Navigation);
+

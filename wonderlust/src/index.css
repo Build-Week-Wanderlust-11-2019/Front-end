@@ -54,12 +54,15 @@ table {
 	border-spacing: 0;
 }
 html,body{
-		overflow: hidden;
-		
+
+		overflow-x: hidden;
+		overflow-y: initial;
+		height: 100vh;
+			
 }
 
 body{
-  
+  color:rgb(214, 150, 120);
 	margin:  0 auto !important;
 	
 }
