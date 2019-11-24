@@ -83,7 +83,7 @@ console.log(markers)
   <div>
    
     <Container fluid ml-0 pl-0>
-    <Col sm="4">.
+    <Col style={col} sm="4" >.
      <UserSearch list={props.exps}  displayMap={mapView} updateRes={setResults} reset={resetList}/>
      </Col>
       {display ? <div style={mapBack}><MapDisplay  markers={markers}/> </div>
@@ -122,7 +122,7 @@ export default withRouter(connect(
 )( UserHome))
 const mapBack={
   position:"absolute",
-  zIndex:"-1",
+  zIndex:"0",
   top:"3rem",
   left:"0",
   right: "0",
@@ -133,4 +133,7 @@ const mapBack={
 const cont={
   padding:"0",
   margin:"0"
+}
+const col={
+  zIndex:"2"
 }

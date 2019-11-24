@@ -92,9 +92,10 @@ function MapDisplay(props) {
 
 export default MapDisplay;
 const color={color:"white"}
+
 const fixWidth= {
  overflow:"hidden",
- margin:"0 auto"
+ margin:"0 auto",
 }
 const transparent ={
  background:"rgba(0,0,0,0)",

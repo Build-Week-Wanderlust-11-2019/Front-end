@@ -63,5 +63,6 @@ const expCard = {
 const container = {
   width:"100%",
   display:"flex",
-  justifyContent:"center"
+  justifyContent:"center",
+  paddingTop:"50px"
 }
