@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import styled from 'styled-components';
-
+import {connect} from 'react-redux'
+import {addInfo} from '../../Actions/index' 
 
 
 const StyledDrop = styled.div`
@@ -36,6 +37,7 @@ function Navigation(props) {
         localStorage.removeItem("name")
         localStorage.removeItem("id")
         localStorage.removeItem("isOrg")
+        props.addInfo("","","")
         props.history.push("/login")
     }
 
@@ -43,31 +45,44 @@ function Navigation(props) {
     function toggler() {
         setOpen(!open)
     }
-    const [personName, setPersonName] = useState('')
-    useEffect(() => {
-        setPersonName(localStorage.getItem('name'))
-    }, [])
+    console.log(props.personName)
+   
 
 
     return (
-        <StyledDrop >
-            <Sh2>Wanderlust</Sh2>
-            <Dropdown direction="left" isOpen={open} toggle={toggler}>
-                <DropdownToggle className="theButton">
-                    <i className="fas fa-bars burgerMenu"></i>
-                </DropdownToggle>
-                <DropdownMenu className="DropdownMenu">
-                    <DropdownItem header>{personName}</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem><Link to="/user"><div>User</div></Link></DropdownItem>
-                    <DropdownItem><Link to="/organizer"><div>Organizer</div></Link></DropdownItem>
-                    <DropdownItem><Link to="#"><div>About</div></Link></DropdownItem>
-                    <DropdownItem onClick={logOut}>Log Out</DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-        </StyledDrop>
+       <div>
+            {props.personName &&
+            <StyledDrop >
+                <Sh2>Wanderlust</Sh2>
+                <Dropdown direction="left" isOpen={open} toggle={toggler}>
+                    <DropdownToggle className="theButton">
+                        <i className="fas fa-bars burgerMenu"></i>
+                    </DropdownToggle>
+                    <DropdownMenu className="DropdownMenu">
+            <DropdownItem header>{props.personName.name}</DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem><Link to="/user"><div>User</div></Link></DropdownItem>
+                        <DropdownItem><Link to="/organizer"><div>Organizer</div></Link></DropdownItem>
+                        <DropdownItem><Link to="#"><div>About</div></Link></DropdownItem>
+                        <DropdownItem onClick={logOut}>Log Out</DropdownItem>
+                    </DropdownMenu>
+                </Dropdown>
+            </StyledDrop>
+            }
+       </div>
     );
 }
-
-export default withRouter(Navigation);
+function mapStateToProps(state){
+    return {
+        personName:state.user.user,
+        
+    }
+}
+const mapDispatchToProps = {
+    addInfo:addInfo
+}
+export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+    )(Navigation));
 

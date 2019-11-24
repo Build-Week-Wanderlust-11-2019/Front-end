@@ -10,6 +10,7 @@ export const ADDUSER = "ADDUSER"
 export const SUCCESS = "SUCCESS"
 export const ADDINFO = "ADDINFO"
 export const DELETE = "DELETE"
+export const ERROR = "ERROR"
 
 export function addInfo(name,id,isOrg){
  localStorage.setItem("id", id);
@@ -39,6 +40,23 @@ export function deleteExp(userId,id){
  })
   
  }
+}
+export function error(errorMess){
+  return dispatch => {
+    dispatch({type:ERROR, payload:errorMess})
+  }
+}
+
+export function loading(){
+  return dispatch => {
+    dispatch({type:LOADING})
+  }
+}
+
+export function success(){
+  return dispatch => {
+    dispatch({type:SUCCESS})
+  }
 }
 
 

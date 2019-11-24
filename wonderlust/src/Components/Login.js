@@ -1,9 +1,11 @@
 import api from "../Utils/AxiosAuth";
-import loginBackground from '../Assets/balloon2.webp'
+import loginBackground from "../Assets/balloon2.webp";
 import React from "react";
+import LoadingSpinner from "../Components/Spinner/LoadingSpinner";
+import Error from "./Error/Error";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import {  addInfo } from "../Actions/index";
+import { addInfo, loading, success, error } from "../Actions/index";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
@@ -27,32 +29,26 @@ z-index:2;
 
 `;
 const StyledForm = styled.form`
-margin-top:4rem
-`
-const StyledI = styled.div `
-margin: 5px;
-
-
-
-`
+  margin-top: 4rem;
+`;
+const StyledI = styled.div`
+  margin: 5px;
+`;
 const Styledinput = styled.input`
-
-border:none;
-text-align: left;
- border:none;
- border-bottom: 1px solid white;
- background:transparent;
- color:white;
- font-size:1.1rem;
- padding-left:10px;
- z-index:2;
- :focus{
-  outline:none;
-  background:transparent;
- }
- 
-
-`
+  border: none;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  color: white;
+  font-size: 1.1rem;
+  padding-left: 10px;
+  z-index: 2;
+  :focus {
+    outline: none;
+    background: transparent;
+  }
+`;
 const StyledLoginTitle = styled.div`
 text-align: center
 font-size: 30px;
@@ -62,49 +58,48 @@ color:white;
 const Styledlogreg = styled.div`
   text-align: center;
   margin-top: 3rem;
-  color:white;
-  display:flex;
-  flex-direction:column;
+  color: white;
+  display: flex;
+  flex-direction: column;
 `;
 const StyledButtonCont = styled.div`
-display:flex;
-`
+  display: flex;
+`;
 const StyledIMG = styled.div`
-filter: 
-  brightness(60%) blur(0px);
-width: 110%;
-min-height:100vh;
-position:fixed;
+  filter: brightness(60%) blur(0px);
+  width: 110%;
+  min-height: 100vh;
+  position: fixed;
 
-background-image: url(${loginBackground});
-background-position: center;
-background-repeat: no-repeat;
-margin: -1rem -10px -2rem -5px;
-overflow-y:auto;
-z-index:-3;
+  background-image: url(${loginBackground});
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: -1rem -10px -2rem -5px;
+  overflow-y: auto;
+  z-index: -3;
 `;
 const Styledbutton = styled.button`
-width:50%;
-margin:1px;
-padding:0;
-display:inline-block;
-background:#4FC57E;
-border:none;
-font-size:1.2rem;
-filter:drop-shadow(4px 4px 4px #3d3d3d);
-:hover{
-  color:white;
-  background:#283E4F;
-}
-
-`
+  width: 50%;
+  margin: 1px;
+  padding: 0;
+  display: inline-block;
+  background: #4fc57e;
+  border: none;
+  font-size: 1.2rem;
+  filter: drop-shadow(4px 4px 4px #3d3d3d);
+  :hover {
+    color: white;
+    background: #283e4f;
+  }
+`;
 
 const StyledCheckCont = styled.div`
 width:50%;
 text-align:left
 display:flex;
-justify-content:space-around;`
+justify-content:space-around;`;
 
+//Login Component
 function Login(props) {
   const [login, setLogin] = useState({
     username: "",
@@ -112,7 +107,12 @@ function Login(props) {
     organizer: false
   });
 
+  useEffect(() => {
+    props.success()
+  }, []);
+
   function register() {
+    props.loading();
     const { username, password } = login;
     if (login.organizer) {
       let id;
@@ -125,13 +125,12 @@ function Login(props) {
               localStorage.setItem("token", res.token);
             })
             .then(res => {
-              console.log(res);
               props.history.push("/organizer");
               props.addInfo(username, id, login.organizer);
             });
         })
         .catch(err => {
-          console.log(err);
+          props.error(err);
         });
       //register user
     } else {
@@ -139,7 +138,6 @@ function Login(props) {
         .post("/api/user/register", { username, password })
         .then(res => {
           loginUser(username, password).then(res => {
-            console.log(res);
             localStorage.setItem("token", res.token);
             props.addInfo(username, null, login.organizer);
             props.history.push("/user");
@@ -147,22 +145,28 @@ function Login(props) {
         })
 
         .catch(err => {
-          console.log(err.nessage + "--in user register promise");
+          props.error(err);
         });
     }
+    props.success();
   }
   function loginClick() {
+    props.loading();
     if (login.organizer) {
       let id;
       loginUser()
         .then(res => {
-          id = res.id;
-          localStorage.setItem("token", res.token);
+          if (res.token) {
+            id = res.id;
+            localStorage.setItem("token", res.token);
+          }
+        })
+        .catch(err => {
+          props.error(err);
         })
         .then(res => {
-          console.log(res);
-
-          props.addInfo(login.username, id, login.organizer);
+          if (localStorage.getItem("token"))
+            props.addInfo(login.username, id, login.organizer);
           props.history.push("/organizer");
         });
     } else {
@@ -170,15 +174,21 @@ function Login(props) {
       loginUser()
         .then(res => {
           id = res.id;
-          localStorage.setItem("token", res.token);
+          if (res.token) {
+            localStorage.setItem("token", res.token);
+          }
+        })
+        .catch(err => {
+          props.error(err);
         })
         .then(res => {
-          console.log(res);
-
-          props.addInfo(login.username, id, login.organizer);
-          props.history.push("/organizer");
+          if (localStorage.getItem("token")) {
+            props.addInfo(login.username, id, login.organizer);
+            props.history.push("/user");
+          }
         });
     }
+    props.success()
   }
   async function loginUser() {
     const { username, password } = login;
@@ -189,12 +199,10 @@ function Login(props) {
         .post("/api/org/login", { org_name: username, password })
         .then(res => {
           id = res.data.id;
-          console.log("logging in org");
           token = res.data.token;
-          console.log(res.data.token);
         })
         .catch(err => {
-          console.log(err.message + "--in org login promise");
+          props.error(err);
         });
       return { id, token };
     } else {
@@ -208,10 +216,11 @@ function Login(props) {
         })
 
         .catch(err => {
-          console.log(err.message + "--in org login promise");
+          props.error(err);
         });
       return { id, token };
     }
+    props.success();
   }
 
   function handleChange(e) {
@@ -221,7 +230,6 @@ function Login(props) {
       [e.target.name]: value
     });
   }
-
   return (
     <>
       <StyledIMG>
@@ -238,7 +246,10 @@ function Login(props) {
         </StyledLoginTitle>
         <br />
         <StyledForm>
-        <StyledI> <i class="fa fa-user-o fa-lg" aria-hidden="true"></i></StyledI>
+          <StyledI>
+            {" "}
+            <i className="fa fa-user-o fa-lg" aria-hidden="true"></i>
+          </StyledI>
 
           <Styledinput
             type="text"
@@ -248,7 +259,9 @@ function Login(props) {
             onChange={handleChange}
           />
           <br />
-          <StyledI ><i class="fa fa-unlock fa-lg" aria-hidden="true"></i></StyledI>
+          <StyledI>
+            <i className="fa fa-unlock fa-lg" aria-hidden="true"></i>
+          </StyledI>
 
           <Styledinput
             type="password"
@@ -261,51 +274,57 @@ function Login(props) {
           <Styledlogreg>
             <StyledCheckCont>
               <input
-              type="checkbox"
-              name="organizer"
-              onChange={e =>
-                setLogin({ ...login, organizer: !login.organizer })
-              }
-              checked={login.organizer}
-            />
-            <p>Organizer?</p>
+                type="checkbox"
+                name="organizer"
+                onChange={e =>
+                  setLogin({ ...login, organizer: !login.organizer })
+                }
+                checked={login.organizer}
+              />
+              <p>Organizer?</p>
             </StyledCheckCont>
             <StyledButtonCont>
-            <Styledbutton 
-              onClick={e => {
-                e.preventDefault();
-                register();
-              }}
-            >
-              Register
-            </Styledbutton>
-            <br />
-            <br />
-            
-            <Styledbutton
-              onClick={e => {
-                e.preventDefault();
-                loginClick();
-              }}
-            >
-              Login
-            </Styledbutton>
+              <Styledbutton
+                onClick={e => {
+                  e.preventDefault();
+                  register();
+                }}
+              >
+                Register
+              </Styledbutton>
+              <br />
+              <br />
+
+              <Styledbutton
+                onClick={e => {
+                  e.preventDefault();
+                  loginClick();
+                }}
+              >
+                Login
+              </Styledbutton>
             </StyledButtonCont>
           </Styledlogreg>
         </StyledForm>
+        {props.isLoading && <LoadingSpinner />}
+        {props.errorMess && (
+          <Error error={props.errorMess.response.data.message} />
+        )}
       </StyledLog>
     </>
   );
 }
 function mapStateToProps(state) {
   return {
-    loading: state.user.loading,
+    isLoading: state.user.loading,
     isOrg: state.user.isOrg,
-    
+    errorMess: state.user.error
   };
 }
 const mapDispatchToProps = {
-  
-  addInfo: addInfo
+  addInfo: addInfo,
+  success: success,
+  loading: loading,
+  error: error
 };
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
