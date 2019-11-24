@@ -14,7 +14,7 @@ function MapDisplay(props) {
      bearing: 0,
      pitch: 0,
      width: window.innerWidth,
-     height:"70vh"
+     height:"100vh"
 
    })
 
