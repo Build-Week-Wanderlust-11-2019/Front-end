@@ -56,5 +56,6 @@ export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(OrganizerHome)
 );
 const cont={
-  height:"100vh"
+  height:"100vh",
+  paddingTop:"10%"
 }

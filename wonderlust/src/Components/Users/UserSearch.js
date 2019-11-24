@@ -21,7 +21,7 @@ function searchChange(e){
 }
 
  return (
-  <Container>
+  <Container style={search}>
     <Row> 
    <Form onSubmit={(e) => {e.preventDefault();titleSearch(e,searchTerm,props.list)}}>
        
@@ -50,4 +50,8 @@ function searchChange(e){
 export default UserSearch;
 const h4={
     color:"white"
+}
+const search={
+    zIndex:"4 ",
+    marginTop:"50px"
 }

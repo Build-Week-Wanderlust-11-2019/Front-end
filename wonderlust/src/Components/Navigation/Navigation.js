@@ -14,6 +14,9 @@ justify-content: space-between;
 align-items:center;
 height:70px;
 padding-right:20px;
+position:fixed;
+width:100%;
+z-index:4;
 
 `
 const Sh2 = styled.h2`
@@ -47,7 +50,7 @@ function Navigation(props) {
 
 
     return (
-        <StyledDrop>
+        <StyledDrop >
             <Sh2>Wanderlust</Sh2>
             <Dropdown direction="left" isOpen={open} toggle={toggler}>
                 <DropdownToggle className="theButton">
@@ -56,9 +59,9 @@ function Navigation(props) {
                 <DropdownMenu className="DropdownMenu">
                     <DropdownItem header>{personName}</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem><Link to="user"><div>User</div></Link></DropdownItem>
-                    <DropdownItem><Link to="organizer"><div>Organizer</div></Link></DropdownItem>
-                    <DropdownItem><Link to="About"><div>About</div></Link></DropdownItem>
+                    <DropdownItem><Link to="/user"><div>User</div></Link></DropdownItem>
+                    <DropdownItem><Link to="/organizer"><div>Organizer</div></Link></DropdownItem>
+                    <DropdownItem><Link to="#"><div>About</div></Link></DropdownItem>
                     <DropdownItem onClick={logOut}>Log Out</DropdownItem>
                 </DropdownMenu>
             </Dropdown>

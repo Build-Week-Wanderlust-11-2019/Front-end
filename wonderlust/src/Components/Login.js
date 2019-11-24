@@ -79,7 +79,7 @@ position:fixed;
 background-image: url(${loginBackground});
 background-position: center;
 background-repeat: no-repeat;
-margin: -5rem -10px -2rem -5px;
+margin: -1rem -10px -2rem -5px;
 overflow-y:auto;
 z-index:-3;
 `;
