@@ -3,8 +3,8 @@ import { Link, withRouter } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import styled from 'styled-components';
 import {connect} from 'react-redux'
-import {addInfo} from '../../Actions/index' 
-
+import {addInfo,success} from '../../Actions/index' 
+import './nav.css'
 
 const StyledDrop = styled.div`
 text-align: right;
@@ -18,6 +18,8 @@ padding-right:20px;
 position:fixed;
 width:100%;
 z-index:4;
+text-decoration:none;
+
 
 `
 const Sh2 = styled.h2`
@@ -38,6 +40,7 @@ function Navigation(props) {
         localStorage.removeItem("id")
         localStorage.removeItem("isOrg")
         props.addInfo("","","")
+        props.success()
         props.history.push("/login")
     }
 
@@ -54,19 +57,26 @@ function Navigation(props) {
             {props.personName &&
             <StyledDrop >
                 <Sh2>Wanderlust</Sh2>
-                <Dropdown direction="left" isOpen={open} toggle={toggler}>
-                    <DropdownToggle className="theButton">
-                        <i className="fas fa-bars burgerMenu"></i>
-                    </DropdownToggle>
-                    <DropdownMenu className="DropdownMenu">
-            <DropdownItem header>{props.personName.name}</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem><Link to="/user"><div>User</div></Link></DropdownItem>
-                        <DropdownItem><Link to="/organizer"><div>Organizer</div></Link></DropdownItem>
-                        <DropdownItem><Link to="#"><div>About</div></Link></DropdownItem>
-                        <DropdownItem onClick={logOut}>Log Out</DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
+               <div className="nav-desktop">
+               <Link to="/user"><div>User</div></Link>
+               <Link to="/organizer"><div>Organizer</div></Link>
+               <Link to="#"onClick={logOut}><div>Log Out</div></Link>
+               </div>
+               <div className="nav-mobile">
+                    <Dropdown direction="left" isOpen={open} toggle={toggler}>
+                        <DropdownToggle className="theButton">
+                            <i className="fas fa-bars burgerMenu"></i>
+                        </DropdownToggle>
+                        <DropdownMenu className="DropdownMenu">
+                            <DropdownItem header>{props.personName.name}</DropdownItem>
+                            <DropdownItem divider />
+                            <DropdownItem><Link to="/user"><div>User</div></Link></DropdownItem>
+                            <DropdownItem><Link to="/organizer"><div>Organizer</div></Link></DropdownItem>
+                            <DropdownItem><Link to="#"><div>About</div></Link></DropdownItem>
+                            <DropdownItem onClick={logOut}>Log Out</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+               </div>
             </StyledDrop>
             }
        </div>
@@ -79,7 +89,8 @@ function mapStateToProps(state){
     }
 }
 const mapDispatchToProps = {
-    addInfo:addInfo
+    addInfo:addInfo,
+    success:success
 }
 export default withRouter(connect(
     mapStateToProps,

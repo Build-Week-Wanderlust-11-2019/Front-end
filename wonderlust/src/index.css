@@ -8,6 +8,7 @@ html,body{
 
 body{
 	margin:  0 auto !important;
-	
+	background-image: linear-gradient(to bottom, #00409f, #0068c0, #008fd6, #00b4e3, #12d8eb);
+
 	
 }

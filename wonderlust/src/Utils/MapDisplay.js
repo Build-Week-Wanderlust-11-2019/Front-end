@@ -35,7 +35,6 @@ function MapDisplay(props) {
   <>
   {props.markers &&
   <div style={fixWidth}>
-   {console.log(props.window)}
    
   
     <ReactMapGl

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form,  Input } from "reactstrap";
 import { Container, Row, Col } from 'reactstrap';
 
 function UserSearch(props) {
@@ -37,7 +37,7 @@ function searchChange(e){
     <Col xs="12" className="mt-2">
         <Button color="success" size="sm" block type="submit">Search</Button>
         <Button color="info" size="sm" block onClick={(e) => {e.preventDefault(); props.reset()}}>See All</Button>
-        <Button color="info" size="sm" block onClick={props.displayMap}>Map View</Button>
+        <Button color="info" size="sm" block onClick={props.displayMap}>{props.bName}</Button>
 
     </Col>
 

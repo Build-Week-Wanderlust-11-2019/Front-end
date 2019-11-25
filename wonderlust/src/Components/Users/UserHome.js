@@ -12,22 +12,6 @@ import PagSystem from '../PagSystem'
 import Usercontact from '../Users/Usercontact'
 import { Container, Row, Col } from 'reactstrap';
 
-// const StyledResDiv = styled.div`
-// display:flex;
-// flex-direction:column;
-// align-items:center;
-// padding:20px;
-// margin:20px;
-
-
-// `
-
-// const StyledContainerDiv = styled.div`
-// width:65%;
-// display:flex:
-
-// `
-
 
 
 function UserHome(props) {
@@ -35,20 +19,23 @@ const [results, setResults] = useState([])
 const [markers, setMarkers] = useState([])
 const [loading, setLoading] = useState()
 const[display,setDisplay]=useState(false)
-// const[windowWidth, setWinWidth] = useState(window.innerWidth)
+const[bName,setbName]=useState("Map View")
 
-// function getWindowWidth(){
-// setWinWidth(window.innerWidth)
-// }
 
-// useEffect(() => {
-//  window.addEventListener('resize', getWindowWidth)
-
-// },[])
 function mapView(){
   setDisplay(!display)
+  
+    
 }
 
+useEffect(() => {
+  if(display){
+    setbName("Card View")
+    }
+    else{
+      setbName("Map View")
+    }
+},[display])
 
 function resetList(){
   setLoading(true)
@@ -84,7 +71,7 @@ console.log(markers)
    
     <Container fluid ml-0 pl-0>
     <Col style={col} sm="4" >.
-     <UserSearch list={props.exps}  displayMap={mapView} updateRes={setResults} reset={resetList}/>
+     <UserSearch list={props.exps} bName={bName} displayMap={mapView} updateRes={setResults} reset={resetList}/>
      </Col>
       {display ? <div style={mapBack}><MapDisplay  markers={markers}/> </div>
       : 
