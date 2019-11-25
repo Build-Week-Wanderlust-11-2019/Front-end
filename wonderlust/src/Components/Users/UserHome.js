@@ -1,16 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import UserSearch from './UserSearch'
-import styled from 'styled-components';
 import api from '../../Utils/AxiosAuth'
 import {connect} from 'react-redux'
-import {withRouter,Link } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {getAllExps} from '../../Actions'
-import Experience from '../Experience'
 import MapDisplay from '../../Utils/MapDisplay'
-import Weather from '../../Utils/Weather';
 import PagSystem from '../PagSystem'
 import Usercontact from '../Users/Usercontact'
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Col } from 'reactstrap';
+import LoadingSpinner from '../Spinner/LoadingSpinner';
 
 
 
@@ -67,7 +65,7 @@ console.log(markers)
   <>
   
   { markers ? 
-  <div>
+  <div style={cont}>
    
     <Container fluid ml-0 pl-0>
     <Col style={col} sm="4" >.
@@ -87,7 +85,7 @@ console.log(markers)
   </div>
 
    
-    : <h1>...Loading</h1>}
+    : <LoadingSpinner />}
      </>
      
 
@@ -118,8 +116,7 @@ const mapBack={
   margin:"auto"
 }
 const cont={
-  padding:"0",
-  margin:"0"
+  paddingBottom:"100px"
 }
 const col={
   zIndex:"2"

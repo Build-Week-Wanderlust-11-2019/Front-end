@@ -15,9 +15,10 @@ justify-content: space-between;
 align-items:center;
 height:70px;
 padding-right:20px;
-position:fixed;
+position:absolute;
+top:0;
 width:100%;
-z-index:4;
+z-index:1;
 text-decoration:none;
 
 
@@ -58,7 +59,7 @@ function Navigation(props) {
             <StyledDrop >
                 <Sh2>Wanderlust</Sh2>
                <div className="nav-desktop">
-               <Link to="/user"><div>User</div></Link>
+               <Link to="/user"><div>Experiences</div></Link>
                <Link to="/organizer"><div>Organizer</div></Link>
                <Link to="#"onClick={logOut}><div>Log Out</div></Link>
                </div>
@@ -70,9 +71,8 @@ function Navigation(props) {
                         <DropdownMenu className="DropdownMenu">
                             <DropdownItem header>{props.personName.name}</DropdownItem>
                             <DropdownItem divider />
-                            <DropdownItem><Link to="/user"><div>User</div></Link></DropdownItem>
+                            <DropdownItem><Link to="/user"><div>Experiences</div></Link></DropdownItem>
                             <DropdownItem><Link to="/organizer"><div>Organizer</div></Link></DropdownItem>
-                            <DropdownItem><Link to="#"><div>About</div></Link></DropdownItem>
                             <DropdownItem onClick={logOut}>Log Out</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>

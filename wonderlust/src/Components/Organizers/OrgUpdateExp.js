@@ -112,9 +112,10 @@ function OrgUpdateExp(props) {
         <Button
           onClick={e => {
             e.preventDefault();
-            console.log(props.orgId)
-            props.deleteExp(orgId, props.id);
+           
+            props.deleteExp(orgId, props.id)
             props.history.push('/organizer')
+          
           }}
         >
           delete

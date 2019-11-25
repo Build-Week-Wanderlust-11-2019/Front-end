@@ -28,7 +28,7 @@ function OrganizerHome(props) {
   }, [exps.length]);
 
   return (
-    <>
+    <div>
     {props.exps &&
      <Container style={cont} className="org-home-cont">
        <Row>
@@ -37,7 +37,7 @@ function OrganizerHome(props) {
      </Row>
       </Container>
       }
-    </>
+    </div>
   );
 }
 
@@ -57,7 +57,8 @@ export default withRouter(
 );
 const cont={
   height:"100vh",
-  paddingTop:"100px"
+  paddingTop:"100px",
+  paddingBottom:"50px"
   
 
 }

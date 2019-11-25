@@ -38,24 +38,31 @@ function App(props) {
 
   return (
    <>
+   
+   
    <Navigation />
-   <Route exact path="/"  component={Login} />
-   <PrivateRoute exact path="/user" component={UserHome}  />
-   <PrivateRoute exact path="/organizer" component={OrganizerHome} />
-   <Route exact path="/login" component={Login} />
-   <PrivateRoute exact path="/update/:id" component={OrganizerUpdatePage} />
-   <Footer/>
+   
+     <Route exact path="/"  component={Login} />
+     <PrivateRoute exact path="/user" component={UserHome}  />
+     <PrivateRoute exact path="/organizer" component={OrganizerHome} />
+     <Route exact path="/login" component={Login} />
+     <PrivateRoute exact path="/update/:id" component={OrganizerUpdatePage} />
+     <Footer/>
+   
+}
    </>
   );
 }
 function mapStateToProps(state){
   return {
-   user:state.user.user
+   user:state.user.user,
+   exps:state.user.experiences
   }
 }
 const mapDispatchToProps = {
 addInfo:addInfo,
-error:error
+error:error,
+
 }
 export default withRouter(
    connect(
