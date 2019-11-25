@@ -30,10 +30,10 @@ function OrganizerHome(props) {
   return (
     <>
     {props.exps &&
-     <Container style={cont}>
+     <Container style={cont} className="org-home-cont">
        <Row>
-        <Col xs='4'><OrgCreateExp userId={props.userId} /></Col>
-        <Col xs='8'><PagSystem exps={props.exps} user={false} loading={loading} /></Col>
+        <Col xs='12' md="4"><OrgCreateExp userId={props.userId} /></Col>
+        <Col xs='12' md="8"> <PagSystem exps={props.exps} user={false} loading={loading} /></Col>
      </Row>
       </Container>
       }
@@ -57,5 +57,7 @@ export default withRouter(
 );
 const cont={
   height:"100vh",
-  paddingTop:"10%"
+  paddingTop:"100px"
+  
+
 }

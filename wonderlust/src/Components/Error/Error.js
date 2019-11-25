@@ -3,7 +3,7 @@ import React from 'react';
 function Error(props) {
  return (
   <div className="error" style={errorStyle}>
-   <h3>{props.error}</h3>
+   <h4>{props.error}</h4>
   </div>
  );
 }
@@ -11,6 +11,12 @@ function Error(props) {
 export default Error;
 const errorStyle = {
 textAlign:"center",
-paddingTop:"10px",
- color:"rgb(236, 88, 88)"
+padding:"3px",
+color:"rgb(236, 88, 88)",
+zIndex:"4",
+background:"rgba(0,0,0,.3)",
+borderRadius:"5px",
+marginTop:"5px",
+maxWidth:"200px",
+margin:"10px auto 0"
 }

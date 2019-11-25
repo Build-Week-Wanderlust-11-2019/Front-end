@@ -108,11 +108,11 @@ function Login(props) {
   });
 
   useEffect(() => {
-    props.success()
+    //props.success()
+    
   }, []);
 
   function register() {
-    props.loading();
     const { username, password } = login;
     if (login.organizer) {
       let id;
@@ -125,6 +125,7 @@ function Login(props) {
               localStorage.setItem("token", res.token);
             })
             .then(res => {
+              
               props.history.push("/organizer");
               props.addInfo(username, id, login.organizer);
             });
@@ -148,10 +149,10 @@ function Login(props) {
           props.error(err);
         });
     }
-    props.success();
+    
   }
   function loginClick() {
-    props.loading();
+    
     if (login.organizer) {
       let id;
       loginUser()
@@ -166,7 +167,8 @@ function Login(props) {
         })
         .then(res => {
           if (localStorage.getItem("token"))
-            props.addInfo(login.username, id, login.organizer);
+          props.success() 
+          props.addInfo(login.username, id, login.organizer);
           props.history.push("/organizer");
         });
     } else {
@@ -183,14 +185,16 @@ function Login(props) {
         })
         .then(res => {
           if (localStorage.getItem("token")) {
+            props.success()
             props.addInfo(login.username, id, login.organizer);
             props.history.push("/user");
           }
         });
     }
-    props.success()
+   
   }
   async function loginUser() {
+    
     const { username, password } = login;
     if (login.organizer) {
       let id;
@@ -218,9 +222,11 @@ function Login(props) {
         .catch(err => {
           props.error(err);
         });
-      return { id, token };
+        
+        return { id, token };
+     
+
     }
-    props.success();
   }
 
   function handleChange(e) {
@@ -247,7 +253,7 @@ function Login(props) {
         <br />
         <StyledForm>
           <StyledI>
-            {" "}
+            
             <i className="fa fa-user-o fa-lg" aria-hidden="true"></i>
           </StyledI>
 
@@ -288,6 +294,7 @@ function Login(props) {
                 onClick={e => {
                   e.preventDefault();
                   register();
+                  props.loading();
                 }}
               >
                 Register
@@ -299,6 +306,7 @@ function Login(props) {
                 onClick={e => {
                   e.preventDefault();
                   loginClick();
+                  props.loading();
                 }}
               >
                 Login
@@ -307,9 +315,7 @@ function Login(props) {
           </Styledlogreg>
         </StyledForm>
         {props.isLoading && <LoadingSpinner />}
-        {props.errorMess && (
-          <Error error={props.errorMess.response.data.message} />
-        )}
+        {props.errorMess &&  <Error error={props.errorMess.response.data.message} />}
       </StyledLog>
     </>
   );

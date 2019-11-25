@@ -16,8 +16,8 @@ constructor(props) {
         zoom: 5,
         bearing: 0,
         pitch: 0,
-        width: 500,
-        height: 300,
+        width: 300,
+        height: 200,
       }
     };
   }

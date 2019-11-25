@@ -6,7 +6,8 @@ import { addExperience } from "../../Actions/index";
 import styled from "styled-components";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-const StyledExpCreator = styled.div``;
+const StyledExpCreator = styled.div`
+`;
 const StyledInput = styled.input`
   padding-top: 1rem;
   margin-top: 1rem;
@@ -73,46 +74,45 @@ function OrgCreateExp(props) {
   return (
     <StyledExpCreator>
       <div >
+        <h2>Create a New Experience</h2>
         <div >
           <Form style={spacing}
             onSubmit={e => {
               searchLocation(e, searchTerm, key);
             }}
           >
-            <StyledInput
-              input
+            <FormGroup>
+            <Label for="location">Location</Label>
+              <Input
               type="text"
               name="location"
               placeholder="location"
               onChange={searchChange}
             />
             <br />
-            <button type="submit">Get location</button>
-
+            <Button type="submit">Get location</Button>
+            </FormGroup>
             <br />
-            <StyledInput
-              input
+            <FormGroup>
+              <Input
               type="text"
               name="experience_title"
               placeholder="title"
               onChange={createChangeHandler}
             />
-            <StyledInput
-              input
+            
+              <Input
               type="text"
               name="experience_desc"
               placeholder="description"
               onChange={createChangeHandler}
             />
-            <StyledInput
-              input
+            <Input
               type="date"
               name="date"
-              placeholder="date"
               onChange={createChangeHandler}
             />
-            <StyledInput
-              input
+            <Input
               type="text"
               name="image"
               placeholder="imageurl"
@@ -127,6 +127,7 @@ function OrgCreateExp(props) {
             >
               create
             </Button>
+            </FormGroup>
           </Form>
           {/*<MapRender coords={data} />*/}
         </div>
