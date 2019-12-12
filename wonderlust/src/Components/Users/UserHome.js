@@ -6,7 +6,6 @@ import {withRouter} from 'react-router-dom'
 import {getAllExps} from '../../Actions'
 import MapDisplay from '../../Utils/MapDisplay'
 import PagSystem from '../PagSystem'
-import Usercontact from '../Users/Usercontact'
 import { Container, Col } from 'reactstrap';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 
@@ -75,7 +74,6 @@ console.log(markers)
       : 
      <Col xs="12">
      <PagSystem loading={loading} exps={results} user={true}/>
-     {/* <Usercontact />     */}
      </Col>
       }
    

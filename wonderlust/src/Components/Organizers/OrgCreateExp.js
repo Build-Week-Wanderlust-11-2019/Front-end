@@ -6,8 +6,7 @@ import { addExperience } from "../../Actions/index";
 import styled from "styled-components";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-const StyledExpCreator = styled.div`
-`;
+
 const StyledInput = styled.input`
   padding-top: 1rem;
   margin-top: 1rem;

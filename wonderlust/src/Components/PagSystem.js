@@ -1,13 +1,12 @@
 import React,{useState} from 'react';
 import PagContainer from './PagContainer'
 import Pagination from './Pagination'
-import { Container, Row, Col } from 'reactstrap';
 
 function PagSystem({exps,loading,user}) {
 
 
 const [currentPage,setCurrentPage] = useState(1)
-const [expsPerPg,setExpsPerPg] = useState(4)
+const [expsPerPg] = useState(4)
 
 const indexOfLastExp = currentPage * expsPerPg
 const indexOfFirstExp = indexOfLastExp - expsPerPg

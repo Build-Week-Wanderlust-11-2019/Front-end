@@ -1,6 +1,5 @@
-import React ,{ useState } from 'react';
-import Weather from '../Utils/Weather'
-import axios from 'axios'
+import React from 'react';
+
 import {
  Card, CardImg, CardText, CardBody,
  CardTitle, CardSubtitle, 
@@ -19,7 +18,7 @@ function Experience(props) {
      <CardSubtitle>Date - {props.data.date}</CardSubtitle>
      <CardText>{props.data.experience_desc}</CardText>
     </CardBody>
-    {/* <Weather weather={weather.consolidated_weather[0].weather_state_abbr}/> */}
+   
    </Card>
    }
   </div>
