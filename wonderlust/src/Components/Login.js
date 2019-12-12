@@ -14,7 +14,7 @@ margin-top:25rem;
 margin-bottom:100px;
 position: absolute;
 top: 10%;
-left: 50%
+left: 50%;
 transform: translate(-50%, -50%);
 padding: 3rem 4rem 7rem 4rem;
 background-image:
@@ -50,7 +50,7 @@ const Styledinput = styled.input`
   }
 `;
 const StyledLoginTitle = styled.div`
-text-align: center
+text-align: center;
 font-size: 30px;
 color:white;
 `;
@@ -76,28 +76,28 @@ const StyledIMG = styled.div`
   background-repeat: no-repeat;
   margin: -1rem -10px -2rem -5px;
   overflow-y: auto;
-  z-index: -3;
+  z-index: 0;
 `;
 const Styledbutton = styled.button`
   width: 50%;
   margin: 1px;
   padding: 0;
+  color:!important black;
   display: inline-block;
-  background: #4fc57e;
+  background: #04ae76;
   border: none;
   font-size: 1.2rem;
-  filter: drop-shadow(4px 4px 4px #3d3d3d);
+  filter: drop-shadow(4px 4px 4px #3f3f3f);
   :hover {
     color: white;
     background: #283e4f;
   }
 `;
-
 const StyledCheckCont = styled.div`
 width:50%;
-text-align:left
+text-align:left;
 display:flex;
-justify-content:space-around;`;
+justify-content:space-around;`
 
 //Login Component
 function Login(props) {
