@@ -8,7 +8,7 @@ import './nav.css'
 
 const StyledDrop = styled.div`
 text-align: right;
-background-color: #283E4F;
+background-color: #0d0d22;
 color: #dddddd;
 display: flex;
 justify-content: space-between;
@@ -18,7 +18,7 @@ padding-right:20px;
 position:absolute;
 top:0;
 width:100%;
-z-index:1;
+z-index:4;
 text-decoration:none;
 
 

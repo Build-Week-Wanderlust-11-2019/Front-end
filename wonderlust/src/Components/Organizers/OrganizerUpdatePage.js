@@ -11,18 +11,18 @@ function OrganizerUpdatePage(props) {
  
  const [exp, setExp] = useState()
  const id = parseInt(props.match.params.id.replace(':', ''))
-
-
+       
+       
   
  useEffect(() => {
   
  setExp(props.experiences.filter(id  => id.id === parseInt(props.match.params.id.replace(':', '')))[0])
   
-
+        
     
  },[props.match.params.id,props.experiences] )
- 
-
+            
+              
  return (
   <Container>
    

@@ -52,6 +52,7 @@ const h4={
     color:"white"
 }
 const search={
-    zIndex:"4 ",
-    marginTop:"50px"
+
+    zIndex:"2 ",
+    marginTop:"100px"
 }
