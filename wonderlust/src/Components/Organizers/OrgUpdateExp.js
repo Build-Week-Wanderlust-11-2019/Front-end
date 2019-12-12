@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input} from "reactstrap";
 import axios from "axios";
 import { connect } from "react-redux";
 import { updateExp, deleteExp } from "../../Actions/index";
@@ -136,8 +136,3 @@ const mapDispatchToProps = {
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OrgUpdateExp));
-const style = {
-  width: "45%",
-  height: "100%",
-  border: "2px solid black"
-};

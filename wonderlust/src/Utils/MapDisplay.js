@@ -1,6 +1,5 @@
 import React, {useState,useEffect} from 'react';
 import ReactMapGl, {Marker, Popup} from 'react-map-gl'
-import { Container, Row, Col } from 'reactstrap';
 import mapMarker from '../Assets/mapMarker.png'
 function MapDisplay(props) {
 

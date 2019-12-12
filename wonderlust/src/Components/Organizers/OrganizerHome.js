@@ -25,7 +25,7 @@ function OrganizerHome(props) {
       setLoading(false);
     };
     getExps();
-  }, [exps.length]);
+  }, [exps.length,props.userId]);
 
   return (
     <div>
