@@ -66,7 +66,6 @@ const StyledButtonCont = styled.div`
   display: flex;
 `;
 const StyledIMG = styled.div`
-  filter: brightness(60%) blur(0px);
   width: 110%;
   min-height: 100vh;
   position: fixed;
