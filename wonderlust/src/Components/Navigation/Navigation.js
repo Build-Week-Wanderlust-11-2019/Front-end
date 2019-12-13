@@ -20,19 +20,10 @@ top:0;
 width:100%;
 z-index:4;
 text-decoration:none;
-
-
 `
 const Sh2 = styled.h2`
 margin-left:20px;
 `
-
-
-
-
-
-
-
 function Navigation(props) {
     function logOut(event) {
         event.preventDefault()

@@ -71,7 +71,7 @@ function OrgCreateExp(props) {
   // change handler for form
 
   return (
-    <StyledExpCreator>
+    <div>
       <div >
         <h2>Create a New Experience</h2>
         <div >
@@ -131,7 +131,7 @@ function OrgCreateExp(props) {
           {/*<MapRender coords={data} />*/}
         </div>
       </div>
-    </StyledExpCreator>
+    </div>
   );
 }
 
