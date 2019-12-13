@@ -24,6 +24,7 @@ text-decoration:none;
 const Sh2 = styled.h2`
 margin-left:20px;
 `
+
 function Navigation(props) {
     function logOut(event) {
         event.preventDefault()
@@ -31,7 +32,7 @@ function Navigation(props) {
         localStorage.removeItem("name")
         localStorage.removeItem("id")
         localStorage.removeItem("isOrg")
-        props.addInfo("","","")
+        // props.addInfo(null,null,null)
         props.success()
         props.history.push("/login")
     }
@@ -40,36 +41,47 @@ function Navigation(props) {
     function toggler() {
         setOpen(!open)
     }
-    console.log(props.personName)
    
-
-
     return (
        <div>
-            {props.personName &&
+            
             <StyledDrop >
                 <Sh2>Wanderlust</Sh2>
+              {localStorage.getItem('name')  ?
                <div className="nav-desktop">
+               
                <Link to="/user"><div>Experiences</div></Link>
                <Link to="/organizer"><div>Organizer</div></Link>
                <Link to="#"onClick={logOut}><div>Log Out</div></Link>
                </div>
+              : <div className="nav-desktop-login">
+                  <Link to="/user"><div>Login</div></Link>
+                  </div>
+               
+               }
                <div className="nav-mobile">
                     <Dropdown direction="left" isOpen={open} toggle={toggler}>
                         <DropdownToggle className="theButton">
                             <i className="fas fa-bars burgerMenu"></i>
                         </DropdownToggle>
-                        <DropdownMenu className="DropdownMenu">
-                            <DropdownItem header>{props.personName.name}</DropdownItem>
+                        {localStorage.getItem('name')  ?
+                         <DropdownMenu className="DropdownMenu">
+                            <DropdownItem header>{localStorage.getItem('name')}</DropdownItem>
                             <DropdownItem divider />
                             <DropdownItem><Link to="/user"><div>Experiences</div></Link></DropdownItem>
                             <DropdownItem><Link to="/organizer"><div>Organizer</div></Link></DropdownItem>
                             <DropdownItem onClick={logOut}>Log Out</DropdownItem>
                         </DropdownMenu>
+                        :
+                        <DropdownMenu className="DropdownMenu">
+                       
+                        <DropdownItem divider />
+                        <DropdownItem><Link to="/Login"><div>Login</div></Link></DropdownItem>
+                        
+                    </DropdownMenu>}
                     </Dropdown>
                </div>
             </StyledDrop>
-            }
        </div>
     );
 }

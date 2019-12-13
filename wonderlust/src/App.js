@@ -32,7 +32,9 @@ function App(props) {
   const isOrg = localStorage.getItem("isOrg")
   
   useEffect(() => {
+  if (id){
    props.addInfo(name,id,isOrg)
+  }
   },[])
   
 
