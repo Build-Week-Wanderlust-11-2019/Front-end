@@ -27,7 +27,7 @@ const createLogActionStackTraceMiddleware = (actionTypes = []) => {
  return logActionStackTraceMiddleware;
 }
 
-const stackTraceMiddleware = createLogActionStackTraceMiddleware(["SUCCESS", "ADDUSER"]);
+const stackTraceMiddleware = createLogActionStackTraceMiddleware(["SUCCESS", "ADDINFO"]);
 
 const store = createStore(rootReducer, compose(
 

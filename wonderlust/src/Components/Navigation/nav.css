@@ -15,7 +15,16 @@ justify-content: space-between;
  border:none;
 
 }
-
+.nav-desktop-login >a {
+  font-size:1.2rem;
+  color:white;
+  text-decoration: none;
+  border:none;
+ 
+ }
+.nav-desktop-login{
+  width:100px;
+}
 .nav-desktop > a :hover{
  
   color:black;
@@ -34,5 +43,8 @@ display:none;
  }
  .nav-desktop{
   display:none;
+ }
+ .nav-desktop-login{
+   display:none;
  }
 }
